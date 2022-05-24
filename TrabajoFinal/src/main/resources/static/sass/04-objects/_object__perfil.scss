@@ -1,0 +1,58 @@
+.perfil {
+    font-size: 4rem;
+    background-color: #a8a8a8;
+    text-align: center;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(82, 82, 82);
+    cursor: pointer;
+    i {
+        font-size: rem(50);
+        color: color(secondary);
+    }
+
+
+    &__container {
+        margin-top: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+        background-color: color(secondary);
+        margin: 40px;
+        margin-top: 20px;
+        border-radius: rem(2);
+
+        p {
+            width: 100%;
+            text-align: center;
+
+            &:first-of-type {
+                margin-top: 15px;
+            }
+
+            &:nth-of-type(2) {
+                font-size: .8rem;
+                color: color(greey-4);
+            }
+        }
+    }
+
+    &__comercial {
+        background-color: rgb(253, 241, 241);
+        &-container {
+            margin: 0 auto;
+            text-align: center;
+
+            .perfil {
+                margin: 10px auto;
+                width:100px;
+                height: 100px;
+            }
+        }
+    }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/bootstrap::head(title='Dashboard')"></head>
+<body m-0>
+	<div class="container-fluid">
+        <header class="evr-header">
+            <nav class="evr-header__menu menu">
+                <section class="menu__container-top">
+                    <div class="menu__logo">
+                        <img src="img/GM.jpg">
+                        <h4>General Motors</h4>
+                    </div>
+                    <h3>Encuentra tu coche al mejor precio</h3>
+                    <ul class="menu__options">
+                        <li><i class="fas fa-search" id="activar"></i></li>
+                        <li><i class="fas fa-th-large"></i></li>
+                        <li><i class="far fa-bell"></i></li>
+                        <li><i class="far fa-user"></i></li>
+                        <li><i class="fas fa-ellipsis-v"></i></li>
+                    </ul>
+                </section>
+            </nav>
+        </header>
+        <main class="evr-main">
+            <aside class="main__menu menu__lateral">
+                <div class="perfil__container">
+                    <div class="perfil">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <p th:text="${session.usuario.nombre}"></p>
+                    <p th:text="${session.usuario.email}"></p>
+                </div>
+                <ul>
+                    <li class="menu__lateral-item"><span><i class="fa fa-car"></i>Comerciales<i class="fas fa-chevron-right"></i></span></li>
+                    <li class="menu__lateral-item"><span><i class="fa fa-user-tie"></i>Vehiculos<i class="fas fa-chevron-right"></i></span></li>
+                    <li class="menu__lateral-item"><span><i class="fa fa-chart-area"></i>Ventas<i class="fas fa-chevron-right"></i></span></li>
+                    <li class="menu__lateral-item"><span><i class="fa fa-chart-mixed"></i>Clientes<i class="fas fa-chevron-right"></i></span></li>
+                </ul>
+            </aside>
+            <section class="main__content">
+                <div class="card slider">
+                    <div class="slider__item item-1">
+                        <canvas id="grafica"></canvas>
+                    </div>
+                </div>
+                <div class="card perfil__comercial">
+                    <div class="perfil__comercial-container">
+                        <div class="perfil">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div th:if="${cmrsl != null}">
+                        	<p th:text="${cmrsl.nombre}" ></p>
+                            <a href="www.google.es">Click</a>
+                        	<p th:text="${cmrsl.email}"></p>
+                        </div>
+                        <div th:if="${cmrsl == null}">
+                        	<p th:text="${comerciales.get(0).nombre}"></p>
+                        	<p th:text="${comerciales.get(0).email}"></p>
+                        </div>
+                    </div>
+                    <form th:action="@{/admin}" method="post" th:object="${comercial}">
+						<div class="form-group">
+							<label for="comercial" class="form-label mt-3" th:text="Employees"></label> 
+							<select class="form-select" name="comercial" id="employee_id">
+								<option th:each="c : ${comerciales}" th:value="${c.id}" th:text="${c.nombre} + ' ' + ${c.apellidos}"/>
+							</select>	
+						</div>
+						<input type="submit" class="btn btn-primary w-100 mt-3" value="Seleccionar" />	
+					</form>
+                </div>
+                <div class="card">
+                	<div th:if = "${customers.size == 0}" th:text="'No hay clientes asignados'"></div>
+                	<div class="card-body" th:each="csm : ${customers}">
+                		<div class="card-title" th:text="${csm.nombre}"></div>
+                	</div>
+                	<!-- 
+                	<div th:if="${cmrsl != null}">
+                		<div class="card-body" th:each="co:${cmrsl.getOrderDetails()}">
+                			<div th:text ="${co.customer.nombre}"></div>
+                		</div>
+                	</div>
+                	 -->
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+<link rel="stylesheet" href="/css/stylos.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.js" integrity="sha512-Lii3WMtgA0C0qmmkdCpsG0Gjr6M0ajRyQRQSbTF6BsrVh/nhZdHpVZ76iMIPvQwz1eoXC3DmAg9K51qT5/dEVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/js/chart.js"></script>
+</html>

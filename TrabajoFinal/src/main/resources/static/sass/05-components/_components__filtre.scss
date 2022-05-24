@@ -1,0 +1,22 @@
+.menu {
+
+    &__container-filtre {
+        width: 98%;
+        margin: auto;
+        background-color: color(greey-2);
+        padding: 10px 10px 20px;
+        margin-top: 40px;
+    }
+
+    &__filtre {
+        display: flex;
+        margin-bottom: 40px;
+    }
+    &__item {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid color(greey-3);
+        background-color: color(secondary);
+        color: color(greey-4);
+    }
+}

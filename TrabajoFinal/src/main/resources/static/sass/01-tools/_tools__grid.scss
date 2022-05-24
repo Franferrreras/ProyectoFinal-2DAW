@@ -1,0 +1,8 @@
+@mixin grid($grid-type, $args, $row-gap, $column-gap: $row-gap) {
+    @supports (display: grid) {
+        display: grid;
+        #{$grid-type}: #{$args};
+        column-gap: $column-gap + px;
+        row-gap: $row-gap + px;
+    }
+}

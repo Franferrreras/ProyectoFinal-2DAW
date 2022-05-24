@@ -1,0 +1,131 @@
+
+
+$ns             :   evr- ;
+
+
+
+$ns-font-size               : 14;
+$ns-line-height             : $ns-font-size + 4;
+$ns-background-color     :	white;
+
+
+
+
+
+///*-------------------------------------------------------------------------
+//   	# BASIC COLORS FOR PROJECT
+//--------------------------------------------------------------------------*/
+
+$wf__background-color      :    #FFF5F5;
+$wf__bg_section-color      :    #f3f7fa;
+
+
+
+$wf__primary-color         :    #FF783E;
+$wf__primary-color-hover   :    #6b6968;
+$wf__secondary-color       :    #F9F9F9;
+$wf__therciary-color       :    #515151;
+$wf__background-filter     :    #F4F1F1;
+$wf__border-color          :    #E5DBDB;
+
+
+/*messages*/
+$wf__error-color           :    #ee3a3a;
+$wf__warning-color         :    #cfa962;
+$wf__info-color            :    #6fadd3;
+$wf__success-color         :    #85bd6e;
+
+/*text */
+$wf__text-default-color    :    #646464;
+$wf__text-twitter          :    #00ACED;
+
+
+
+
+
+/*-------------------------------------------------------------------------
+//      # INCLUDE ELEMENTS
+//------------------------------------------------------------------------*/
+
+$include__a                     :   true   !default;
+$include__body                  :   true   !default;
+$include__figure                :   true   !default;
+$include__headings              :   true   !default;
+$include__hr                    :   true   !default;
+$include__html                  :   true   !default;
+$include__iframe                :   true   !default;
+$include__image                 :   true   !default;
+$include__lists                 :   true   !default;
+$include__table                 :   true   !default;
+
+
+/*-------------------------------------------------------------------------
+//      # INCLUDE OBJECTS
+//------------------------------------------------------------------------*/
+
+$include__badge                 :   false   !default;
+$include__banner                :   false   !default;
+$include__box                   :   false   !default;
+$include__buttons               :   true   !default;
+$include__calendar-yui          :   true   !default;
+$include__calendar              :   true   !default;
+$include__carousel              :   false   !default;
+$include__carousel-fade         :   false   !default;
+$include__card                  :   false   !default;
+$include__debug-css             :   false   !default;
+$include__dropdown              :   false   !default;
+$include__figcaption            :   false   !default;
+$include__form-controls         :   false   !default;
+$include__label                 :   false   !default;
+$include__loaders               :   false   !default;
+$include__modal                 :   false   !default;
+$include__navbar                :   false   !default;
+$include__navigation            :   false   !default;
+$include__pagination            :   true   !default;
+$include__portlet               :   true   !default;
+$include__quote                 :   false   !default;
+$include__search-facet          :   false   !default;
+$include__search-sugest         :   false   !default;
+$include__sidebar               :   false   !default;
+$include__sidenav               :   false   !default;
+$include__site-title            :   true   !default;
+$include__table                 :   false   !default;
+$include__tabs                  :   true   !default;
+$include__taglib                :   false   !default;
+$include__wrapper               :   true   !default;
+
+
+/*-----------------------------------------------------
+///     # CONFIG - FONTS
+///---------------------------------------------------*/
+
+$wf__font--default          : "OpenSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$wf__font--bold             : "OpenSansBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$wf__font--light            : "OpenSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$wf__font--alternative      : "BillyOhio", Helvetica, Arial, sans-serif;
+$wf__font--sans             : "OpenSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$wf__font--sans-bold        : "OpenSansBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$wf__font--fa               : "fontawesome-alloy";
+$wf__font--assistant        : 'Assistant';
+$wf__font--assistant-bold   : 'Assistant-Bold';
+$wf__font--assistant-Semibold   : 'Assistant-Semibold';
+
+
+
+$wf__base-font-size            :    16;
+$wf__base-line-height          :    1.5;
+$wf__base-font-family          :    $wf__font--default;
+$wf__base-typography-color     :    $wf__text-default-color;
+$wf__base-path-font            :    "fonts/";
+
+
+/*----------------------------------------------
+//    # HEADINGS | FONT-SIZE DEFAULT
+//----------------------------------------------*/
+
+$wf__h1: 36 !default;
+$wf__h2: 30 !default;
+$wf__h3: 26 !default;
+$wf__h4: 20 !default;
+$wf__h5: 13 !default;
+$wf__h6: 11 !default;
