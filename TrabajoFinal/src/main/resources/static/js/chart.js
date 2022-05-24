@@ -6,7 +6,7 @@ HTTP_STATUS_OK = 200;
 
 function inicio() {
     cargar_grafica_fetch();
-    document.getElementById("employee_id").addEventListener("click",cargar_grafica_fetch);
+    selected();
 }
 
 let chart = null;
@@ -26,13 +26,23 @@ function cargarGrafica(list_json) {
     let nov = 0;
     let dic = 0;
 
-    let id_employee = document.getElementById("employee_id").value;
-    console.log("holaaaaa");
+    let id_employee;
+    
+    if (document.getElementById("employee_id")) {
+        id_employee = document.getElementById("employee_id").getAttribute("value");
+    } else {
+        id_employee = document.getElementById("employee_id2").getAttribute("value");
+    }
+    
+    // if (document.getElementById("employee_id2").getAttribute("value") != "" ) {
+    //     id_employee = document.getElementById("employee_id2").getAttribute("value");
+    // }
+    console.log("holaaaaaaa");
     console.log(id_employee);
-
     for (let i of list_json) {
         let date = new Date(i.reservaDate);
-        if (i.id_comercial == id_employee.value) {
+        console.log(i)
+        if (i.comercial.id == id_employee) {
     
             if (date.getMonth() == 0) {
                 jun = i.priceBuy;
@@ -111,6 +121,17 @@ function cargarGrafica(list_json) {
         });
     } else {
         chart.data.datasets[0].data[0] = jun;
+        chart.data.datasets[0].data[1] = fbr;
+        chart.data.datasets[0].data[2] = mrz;
+        chart.data.datasets[0].data[3] = abrl;
+        chart.data.datasets[0].data[4] = may;
+        chart.data.datasets[0].data[5] = jn;
+        chart.data.datasets[0].data[6] = jl;
+        chart.data.datasets[0].data[7] = ags;
+        chart.data.datasets[0].data[8] = spt;
+        chart.data.datasets[0].data[9] = oct;
+        chart.data.datasets[0].data[10] = nov;
+        chart.data.datasets[0].data[11] = dic;
         chart.update();
     }
 
@@ -166,3 +187,21 @@ function cargar_grafica_fetch() {
     .catch((err) => console.log(err));
 }
 
+
+
+function selected() {
+    if (document.getElementById("employee_id2")) {
+
+        let opt = document.getElementsByClassName("slct");
+        let empl = document.getElementById("employee_id2").getAttribute("value");
+        console.log("heeeeeeeeeey")
+        console.log(empl);
+        for (let i of opt) {
+            console.log(i);
+            if (i.value == empl) {
+                i.setAttribute("selected", "selected");
+            }
+        }
+        
+    }
+}

@@ -173,5 +173,4 @@ public class Usuario implements Serializable {
 				+ ", role=" + role + ", activo=" + activo + "]";
 	}
 
-	
 }

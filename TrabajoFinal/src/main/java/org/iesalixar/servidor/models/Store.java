@@ -38,6 +38,9 @@ public class Store implements Serializable{
 
 	@Column(nullable = false)
 	private String phone;
+	
+	@Column
+	private String ejemplo_columna;
 
 	@OneToMany(mappedBy = "store", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Vehicle> vehiculos = new HashSet<>();
