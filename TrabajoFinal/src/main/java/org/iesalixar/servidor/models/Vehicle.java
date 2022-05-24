@@ -50,6 +50,9 @@ public class Vehicle implements Serializable {
 	
 	@Column(nullable = false)
 	private double price;
+	
+	@Column
+	private String imagen;
 
 	@ManyToOne
 	@JoinColumn(name = "id_store")
@@ -157,6 +160,16 @@ public class Vehicle implements Serializable {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	
+	
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 	@Override
