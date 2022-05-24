@@ -49,20 +49,20 @@
                             <i class="fas fa-user"></i>
                         </div>
                         <div th:if="${cmrsl != null}">
-                        	<p th:text="${cmrsl.nombre}" ></p>
+                        	<p th:text="${cmrsl.nombre}" id="employee_id2" th:value="${cmrsl.id}"></p>
                             <a href="www.google.es">Click</a>
                         	<p th:text="${cmrsl.email}"></p>
                         </div>
-                        <div th:if="${cmrsl == null}">
-                        	<p th:text="${comerciales.get(0).nombre}"></p>
+                        <div th:if="${cmrsl == null}"> 
+                        	<p id="employee_id" th:text="${comerciales.get(0).nombre}" th:value="${comerciales.get(0).id}"></p>
                         	<p th:text="${comerciales.get(0).email}"></p>
                         </div>
                     </div>
                     <form th:action="@{/admin}" method="post" th:object="${comercial}">
 						<div class="form-group">
 							<label for="comercial" class="form-label mt-3" th:text="Employees"></label> 
-							<select class="form-select" name="comercial" id="employee_id">
-								<option th:each="c : ${comerciales}" th:value="${c.id}" th:text="${c.nombre} + ' ' + ${c.apellidos}"/>
+							<select class="form-select" name="comercial">
+								<option class="slct" th:each="c : ${comerciales}" th:value="${c.id}" th:text="${c.nombre} + ' ' + ${c.apellidos}"/>
 							</select>	
 						</div>
 						<input type="submit" class="btn btn-primary w-100 mt-3" value="Seleccionar" />	
@@ -79,7 +79,7 @@
                 			<div th:text ="${co.customer.nombre}"></div>
                 		</div>
                 	</div>
-                	 -->
+                	-->
                 </div>
             </section>
         </main>
