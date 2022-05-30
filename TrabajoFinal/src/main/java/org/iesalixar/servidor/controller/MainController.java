@@ -45,7 +45,7 @@ public class MainController {
 
 		List<Vehicle> list_vehicle = vehicleService.getAllVehicles();
 		model.addAttribute("vehiculos", list_vehicle);
-		
+		System.out.println(list_vehicle.get(6).getArrayImagenes(0));
 		return "inicio";
 	}
 

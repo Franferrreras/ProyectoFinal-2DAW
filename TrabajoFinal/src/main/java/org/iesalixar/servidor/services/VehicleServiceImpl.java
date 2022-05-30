@@ -22,6 +22,11 @@ public class VehicleServiceImpl implements VehicleService {
 	@Override
 	public Vehicle insertVehicle(Vehicle vehicle) {
 		// TODO Auto-generated method stub
+		
+		if (vehicle != null) {
+			return vehicleRepo.save(vehicle);
+		}
+		
 		return null;
 	}
 
@@ -35,6 +40,12 @@ public class VehicleServiceImpl implements VehicleService {
 	public Vehicle deleteVehicle(Vehicle vehicle) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Vehicle getVehicleByMatrucula(String matricula) {
+		// TODO Auto-generated method stub
+		return vehicleRepo.findByMatricula(matricula);
 	}
 
 }

@@ -21,3 +21,13 @@
     -ms-box-shadow: $val;
     box-shadow: $val;
 }
+
+@mixin  box-shadow-custom($tiempo) {
+    transition: $tiempo ;
+
+    &:hover {
+        transform: scale(1.005);
+        box-shadow: 3px 3px 5px grey;
+        cursor: pointer;
+    }
+}

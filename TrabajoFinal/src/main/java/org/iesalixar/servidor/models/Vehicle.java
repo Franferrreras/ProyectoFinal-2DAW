@@ -1,6 +1,7 @@
 package org.iesalixar.servidor.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -47,12 +48,9 @@ public class Vehicle implements Serializable {
 
 	@Column(nullable = false)
 	private String kilometros;
-	
+
 	@Column(nullable = false)
 	private double price;
-	
-	@Column
-	private String imagen;
 
 	@ManyToOne
 	@JoinColumn(name = "id_store")
@@ -60,6 +58,9 @@ public class Vehicle implements Serializable {
 
 	@OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<OrderDetail> orderDetails = new HashSet<>();
+
+	@OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<ImgVehicle> imagenes = new HashSet<>();
 
 	public Vehicle() {
 		super();
@@ -153,7 +154,7 @@ public class Vehicle implements Serializable {
 	public void setOrderDetails(Set<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
-	
+
 	public double getPrice() {
 		return price;
 	}
@@ -162,14 +163,27 @@ public class Vehicle implements Serializable {
 		this.price = price;
 	}
 
-	
-	
-	public String getImagen() {
-		return imagen;
+	public Set<ImgVehicle> getImagenes() {
+		return imagenes;
 	}
 
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
+	public void setImagenes(Set<ImgVehicle> imagenes) {
+		this.imagenes = imagenes;
+	}
+	
+	public String  getArrayImagenes(int num) {
+		
+		ArrayList<ImgVehicle> list_imgs = null;
+		if (this.imagenes.size() > 0) {
+			
+			list_imgs = new ArrayList<>();
+			for (ImgVehicle i : imagenes) {
+				list_imgs.add(i);
+				
+				return list_imgs.get(num).getImagen();
+			}
+		}
+		return "nada";
 	}
 
 	@Override
@@ -187,6 +201,17 @@ public class Vehicle implements Serializable {
 			return false;
 		Vehicle other = (Vehicle) obj;
 		return Objects.equals(id, other.id) && Objects.equals(matricula, other.matricula);
+	}
+
+	// Métodos HELPERs
+	public void addImg(ImgVehicle imgv) {
+		this.imagenes.add(imgv);
+		imgv.setVehicle(this);
+	}
+
+	public void removeImg(ImgVehicle imgv) {
+		this.imagenes.remove(imgv);
+		imgv.setVehicle(null);
 	}
 
 }

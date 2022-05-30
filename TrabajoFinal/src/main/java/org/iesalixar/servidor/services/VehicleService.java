@@ -10,4 +10,5 @@ public interface VehicleService {
 	public Vehicle insertVehicle(Vehicle vehicle);
 	public Vehicle updateVehicle(Vehicle vehicle);
 	public Vehicle deleteVehicle(Vehicle vehicle);
+	public Vehicle getVehicleByMatrucula(String matricula);
 }

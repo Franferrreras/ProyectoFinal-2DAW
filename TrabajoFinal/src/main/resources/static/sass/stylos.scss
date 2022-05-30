@@ -5,6 +5,7 @@
 @import "01-tools/tools__pixel-to-rem";
 @import "01-tools/tools__grid";
 @import "01-tools/tools__transition";
+@import "01-tools/tools__box-shadow";
 @import "02-generic/_generic__reset";
 @import "03-elements/_elements__image";
 @import "03-elements/element__li";
@@ -20,3 +21,5 @@
 @import "05-components/components__menu-lateral";
 @import "05-components/components__main";
 @import "05-components/components__graphic";
+@import "05-components/components__inicio";
+@import "05-components/components_card-vehiculo";

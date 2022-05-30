@@ -2,21 +2,16 @@ package org.iesalixar.servidor.models;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.springframework.core.annotation.Order;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)

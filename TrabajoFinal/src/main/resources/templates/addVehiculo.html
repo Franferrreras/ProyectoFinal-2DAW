@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/bootstrap::head(title='Registrase')">
+	<link rel="stylesheet" href="/css/stylos.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-6">
+				<form action="#" th:action="@{/addVehiculo}" th:object="${vehiculo}" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+						<label for="marca" class="form-label mt-3">Marca</label>
+						<select class="form-select" name="marca">
+							<option th:each="m : ${marcas}" th:text="${m}" th:field="*{marca}" th:value="${m}">
+						</select>
+					</div>
+    				<label for="modelo" class="form-label mt-3">Modelo</label>
+    				<input type="text" class="form-control" id="modelo" name="modelo" th:field="*{modelo}" required >
+    				<label for="version" class="form-label mt-3">Version</label>
+    				<input type="text" class="form-control" id="version" name="version" th:field="*{version}" required >
+    				<div class="form-group">
+						<label for="combustible" class="form-label mt-3">Combustible</label>
+						<select class="form-select" name="combustible">
+							<option th:each="c : ${combustibles}" th:text="${c}" th:field="*{marca}" th:value="${c}">
+						</select>
+					</div>
+    				<label for="year" class="form-label mt-3">Year</label>
+    				<input type="number" class="form-control" id="year" name="year" th:field="*{year}" required min="2000" max="2050">
+    				<label for="kilometros" class="form-label mt-3">Kilometros</label>
+    				<input type="number" class="form-control" id="kilometros" name="kilometros" th:field="*{kilometros}" required>
+    				<label for="matricula" class="form-label mt-3">Matricula</label>
+    				<input type="text" class="form-control" id="matricula" name="matricula" th:field="*{matricula}" required>
+    				<label class="form-label mt-3" name="imagen">Imagen</label>
+    				<input type="file" class="form-control" id="imagen" name="file">
+    				<input type="submit" class="btn btn-primary w-100 mt-3" value="REGISTRAR" />
+				</form>
+			</div>		
+		</div>
+	</div>
+</body>
+</html>

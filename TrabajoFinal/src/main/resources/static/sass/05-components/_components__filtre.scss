@@ -1,5 +1,5 @@
 .menu {
-
+    
     &__container-filtre {
         width: 98%;
         margin: auto;
@@ -11,6 +11,10 @@
     &__filtre {
         display: flex;
         margin-bottom: 40px;
+
+        &__sub {
+            display: none;
+        }
     }
     &__item {
         margin: 10px;
