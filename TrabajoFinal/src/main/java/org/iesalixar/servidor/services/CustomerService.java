@@ -12,4 +12,5 @@ public interface CustomerService {
 	public Customer insertCustomer(Customer customer);
 	public Customer updateCustomer(Customer customer);
 	public Customer getCustomerByDni(String dni);
+	public Customer findCustomerByName(String name);
 }

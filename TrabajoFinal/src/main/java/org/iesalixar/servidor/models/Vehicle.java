@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "vehiculo")
 public class Vehicle implements Serializable {
@@ -54,13 +56,20 @@ public class Vehicle implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_store")
+	@JsonIgnore
 	private Store store;
 
 	@OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
 	private Set<OrderDetail> orderDetails = new HashSet<>();
 
 	@OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
 	private Set<ImgVehicle> imagenes = new HashSet<>();
+
+	@OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	private Set<Cart> cart = new HashSet<>();
 
 	public Vehicle() {
 		super();
@@ -170,20 +179,43 @@ public class Vehicle implements Serializable {
 	public void setImagenes(Set<ImgVehicle> imagenes) {
 		this.imagenes = imagenes;
 	}
-	
-	public String  getArrayImagenes(int num) {
-		
+
+	public Set<Cart> getCart() {
+		return cart;
+	}
+
+	public void setCart(Set<Cart> cart) {
+		this.cart = cart;
+	}
+
+	public String getArrayImagenes(int num) {
+
 		ArrayList<ImgVehicle> list_imgs = null;
 		if (this.imagenes.size() > 0) {
-			
+
 			list_imgs = new ArrayList<>();
 			for (ImgVehicle i : imagenes) {
 				list_imgs.add(i);
-				
+
 				return list_imgs.get(num).getImagen();
 			}
 		}
 		return "nada";
+	}
+	
+	public ArrayList<ImgVehicle> getListImagenes() {
+
+		ArrayList<ImgVehicle> list_imgs = null;
+		if (this.imagenes.size() > 0) {
+
+			list_imgs = new ArrayList<>();
+			for (ImgVehicle i : imagenes) {
+				list_imgs.add(i);
+
+				return list_imgs;
+			}
+		}
+		return null;
 	}
 
 	@Override
@@ -212,6 +244,13 @@ public class Vehicle implements Serializable {
 	public void removeImg(ImgVehicle imgv) {
 		this.imagenes.remove(imgv);
 		imgv.setVehicle(null);
+	}
+
+	@Override
+	public String toString() {
+		return "Vehicle [id=" + id + ", matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo
+				+ ", version=" + version + ", combustible=" + combustible + ", year=" + year + ", status=" + status
+				+ ", kilometros=" + kilometros + ", price=" + price + "]";
 	}
 
 }

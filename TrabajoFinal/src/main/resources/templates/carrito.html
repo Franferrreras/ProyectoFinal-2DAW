@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/bootstrap::head(title='Main')"></head>
+<body>
+	<div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">
+            Spring eCommerce <small>Carrito</small>
+        </h1>
+    
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item active">Carrito</li>
+        </ol>
+    
+        <!-- Blog Post -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row" th:each="c : ${carrito}">
+                    <div class="card card-carrito flex-row">
+                    	<!--   
+                    	<img class="card-img-top" th:unless="${v.imagenes.size() == 0}" th:src="@{'img/' + ${v.getArrayImagenes(0)}}">
+                        <img class="card-img-top" th:if="${v.imagenes.size() == 0}" src="img/coche_generic.png">
+                        -->
+                        <div class="col-6">
+                            <img class="card-img-top" th:unless="${c.getVehicle().getImagenes().size() == 0}" th:src="@{'img/' + ${c.getVehicle().getArrayImagenes(0)}}">
+                            <img class="card-img-top" th:if="${c.getVehicle().getImagenes().size() == 0}" src="img/coche_generic.png">
+                        </div>
+                        <div class="card-body col-6">
+                            <div class="titleWrapper">
+                                <h2 class="title__marca" th:text="${c.getVehicle().getMarca()}"></h2>
+                                <div class="title__price" th:text="${c.getVehicle().getPrice()}"></div>
+                            </div>
+                            <div class="subtitleWrapper">
+                                <h3 class="subtitle__version" th:text="${c.getVehicle().getVersion()}"></h3> 
+                                <div class="subtitle__monthlyPrice">Cuota</div>
+                            </div>
+                            <div class="features">
+                                <div class="feature-list__wrapper">
+                                    <ul class="feature-list">
+                                        <li class="feature-list__item" th:text="${c.getVehicle().getYear()}"></li>
+                                        <li class="feature-list__item" th:text="${c.getVehicle().getCombustible()}"></li>
+                                        <li class="feature-list__item" th:text="${c.getVehicle().getKilometros()}"></li>
+                                        <li class="feature-list__item">Caja Cambio</li>
+                                    </ul>
+                                </div>
+                                <div class="totalPrice">Al contado</div>
+                            </div>
+                        </div>
+                         <a th:href="@{'/favorite/removeFavorite?coche='+${c.getVehicle().getMatricula()} + '&cbck=bck'}">
+                            <i class='bx bxs-trash'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<link rel="stylesheet" href="/css/stylos.css">
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</html>
+<!-- /.container -->
+

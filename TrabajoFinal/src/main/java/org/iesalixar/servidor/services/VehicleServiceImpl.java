@@ -45,7 +45,7 @@ public class VehicleServiceImpl implements VehicleService {
 	@Override
 	public Vehicle getVehicleByMatrucula(String matricula) {
 		// TODO Auto-generated method stub
-		return vehicleRepo.findByMatricula(matricula);
+		return vehicleRepo.findVehicleByMatricula(matricula);
 	}
 
 }

@@ -41,8 +41,19 @@ public class MainController {
 	VehicleServiceImpl vehicleService;
 
 	@RequestMapping("/")
-	public String inicio(Model model) {
+	public String inicio(Model model, Authentication auth, HttpSession session) {		
+		
+		if (auth != null) {
+			String username = auth.getName();
 
+			if (session.getAttribute("usuario") == null) {
+				Usuario usuario = usuarioService.findUsuarioByUserName(username);
+				usuario.setPassword(null);
+				session.setAttribute("usuario", usuario);
+			}
+		}
+		
+		
 		List<Vehicle> list_vehicle = vehicleService.getAllVehicles();
 		model.addAttribute("vehiculos", list_vehicle);
 		System.out.println(list_vehicle.get(6).getArrayImagenes(0));

@@ -32,7 +32,7 @@ public class ComercialServiceImpl implements ComercialService {
 	@Override
 	public Comercial updateComercial(Comercial comercial) {
 		// TODO Auto-generated method stub
-		return null;
+		return comercialRepo.save(comercial);
 	}
 
 	@Override

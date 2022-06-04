@@ -36,7 +36,7 @@ public class VehicleServiceTest {
 		vehiculo.setPrice(36000);
 		
 		
-		when(vehicleRepo.findByMatricula("3399 LKT")).thenReturn(vehiculo);
+		when(vehicleRepo.findVehicleByMatricula("3399 LKT")).thenReturn(vehiculo);
 		
 		assertEquals(vehiculo, vehicleService.getVehicleByMatrucula("3399 LKT"));
 	}

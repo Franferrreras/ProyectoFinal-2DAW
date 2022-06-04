@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping("/addVehiculo")
+@RequestMapping("/car")
 public class VehiculoController {
 
 	@Autowired
@@ -28,7 +28,7 @@ public class VehiculoController {
 	
 	
 	
-	@GetMapping
+	@GetMapping("/add")
 	public String addVehiculo(Model model) {
 		
 		Vehicle vehiculo = new Vehicle();
@@ -54,7 +54,7 @@ public class VehiculoController {
 		return "addVehiculo";
 	}
 	
-	@PostMapping
+	@PostMapping("/add")
 	public String addVehiculo(@ModelAttribute Vehicle vehiculo ,@RequestParam("file") MultipartFile imagen) {
 		
 		
@@ -95,9 +95,19 @@ public class VehiculoController {
 		}
 		
 		if (vehiculoService.insertVehicle(vehiculoDB) == null) {
-			return "redirect:/addVehiculo?error=Ya existe el vehicul";
+			return "redirect:/car/add?error=Ya existe el vehiculo";
 		}
 		
-		return "redirect:/addVehiculo";
+		return "redirect:/car/add";
+	}
+	
+	@GetMapping("/details")
+	public String detailCar(@RequestParam(name="matricula", required=false) String matricula, Model model) {
+		
+		Vehicle car = vehiculoService.getVehicleByMatrucula(matricula);
+		
+		model.addAttribute("vehiculo", car);
+		
+		return "detailVehiculo";
 	}
 }

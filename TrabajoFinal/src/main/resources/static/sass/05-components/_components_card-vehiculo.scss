@@ -1,6 +1,7 @@
 
 .card {
 
+    position: relative;
     .title, .titleWrapper {
         width: 100%;
         display: flex;
@@ -85,4 +86,6 @@
             text-align: right;
         }
     }
+
+
 }

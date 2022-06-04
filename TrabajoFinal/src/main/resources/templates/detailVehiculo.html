@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/bootstrap::head(title='Main')"></head>
+<body>
+	<div class="container-fluid mt-5">
+		<header class="evr-header">
+            <nav class="evr-header__menu menu">
+                <section class="menu__container-top">
+                    <div class="menu__logo">
+                        <img src="/img/GM.jpg">
+                        <h4>General Motors</h4>
+                    </div>
+                    <div th:insert="fragments/parts::menu"></div>
+                    <!-- <h3>Encuentra tu coche al mejor precio</h3> -->
+                    <ul class="menu__options">
+                        <li><i class="fas fa-search" id="activar"></i></li>
+                        <li><i class="fas fa-th-large"></i></li>
+                        <li><i class="far fa-bell"></i></li>
+                        <li><i class="far fa-user"></i></li>
+                        <li><i class="fas fa-ellipsis-v"></i></li>
+                    </ul>
+                </section>
+            </nav>
+        </header>
+		<main>
+			<div class="main__detail">
+                <div class="card">
+                	<a class="img__a"><i class='bx bx-image-add' style='color:#5c5858'  ></i></a>
+               		<img class="card-img-top" th:unless="${vehiculo.imagenes.size() == 0}" th:each="i : ${vehiculo.getListImagenes()}" th:src="@{'/img/' + ${i.getImagen()}}">
+                   	<img class="card-img-top" th:if="${vehiculo.imagenes.size() == 0}" src="/img/coche_generic.png">
+                    <div class="card-body">
+                        <div class="titleWrapper">
+                            <h2 class="title__marca" th:text="${vehiculo.marca}"></h2>
+                            <div class="title__price" th:text="${vehiculo.price}"></div>
+                        </div>
+                        <div class="subtitleWrapper">
+                            <h3 class="subtitle__version" th:text="${vehiculo.version}"></h3> 
+                            <div class="subtitle__monthlyPrice">Cuota</div>
+                        </div>
+                        <div class="features">
+                            <div class="feature-list__wrapper">
+                                <ul class="feature-list">
+                                    <li class="feature-list__item" th:text="${vehiculo.year}"></li>
+                                    <li class="feature-list__item" th:text="${vehiculo.combustible}"></li>
+                                    <li class="feature-list__item" th:text="${vehiculo.kilometros}"></li>
+                                    <li class="feature-list__item">Caja Cambio</li>
+                                </ul>
+                            </div>
+                            <div class="totalPrice">Al contado</div>
+                        </div>
+                    </div>
+                    <button class="heart btnheart" id="btnheart" th:value="${vehiculo.getId()}">
+                        <a th:href="@{'/favorite/addFavorite?coche='+${vehiculo.getMatricula()}}">
+                            <svg width="30" height="28" viewBox="-1 -1 30 28" xmlns="http://www.w3.org/2000/svg" class="icon___2c4Kt heartIcon___2AF7i">
+                            	<path d="M20.448 0c-2.679 0-5.137 1.454-6.472 3.69C12.43 1.336 10.12 0 7.547 0 3.385 0 0 3.389 0 7.554c0 .727.104 1.443.308 2.128.627 3.546 5.02 7.67 9.268 11.657 1.475 1.384 2.868 2.693 4.057 3.932a.87.87 0 001.402-.206c1.727-2.097 3.725-4.037 5.658-5.914 3.58-3.478 6.677-6.485 7.029-9.527A8.13 8.13 0 0028 7.554C28 3.389 24.612 0 20.448 0" stroke-width="2" fill-rule="evenodd">
+                            	</path>
+                        	</svg>
+                        </a>
+                        <a th:href="@{'/favorite/removeFavorite?coche='+${vehiculo.getMatricula()}}" hidden>
+                            <svg width="30" height="28" viewBox="-1 -1 30 28" xmlns="http://www.w3.org/2000/svg" class="icon___2c4Kt heartIcon___2AF7i icon___2c4Kt-selected">
+                            	<path d="M20.448 0c-2.679 0-5.137 1.454-6.472 3.69C12.43 1.336 10.12 0 7.547 0 3.385 0 0 3.389 0 7.554c0 .727.104 1.443.308 2.128.627 3.546 5.02 7.67 9.268 11.657 1.475 1.384 2.868 2.693 4.057 3.932a.87.87 0 001.402-.206c1.727-2.097 3.725-4.037 5.658-5.914 3.58-3.478 6.677-6.485 7.029-9.527A8.13 8.13 0 0028 7.554C28 3.389 24.612 0 20.448 0" stroke-width="2" fill-rule="evenodd">
+                            	</path>
+                        	</svg>
+                        </a>
+                    </button>
+                </div>
+            </div>
+		</main>
+	</div>
+</body>
+<link rel="stylesheet" href="/css/stylos.css">
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</html>

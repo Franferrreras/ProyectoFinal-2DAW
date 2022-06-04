@@ -1,0 +1,29 @@
+.main {
+
+    &__detail {
+
+        .card {
+
+            position: relative;
+
+            &-img-top {
+
+                height: 400px;
+            }
+
+            &-body {
+                padding: 20px 50px;
+            }
+
+            .img__a {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+
+                i {
+                    font-size: rem(30);
+                }
+            }
+        }
+    }
+}

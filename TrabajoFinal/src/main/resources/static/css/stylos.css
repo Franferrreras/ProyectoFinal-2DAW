@@ -263,6 +263,51 @@ h6 {
         width: 100px;
         height: 100px; }
 
+.heart {
+  position: absolute;
+  top: 270px;
+  left: 12px;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  padding: 5px;
+  border: 1px solid #eedada;
+  border-radius: 50%;
+  transition: all .1s ease-in-out .1s;
+  margin-left: 0;
+  color: #f37121;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.5; }
+  .heart:hover {
+    transform: scale(1.2); }
+    .heart:hover .icon___2c4Kt {
+      fill: #f37121; }
+  .heart a {
+    text-decoration: none;
+    color: inherit; }
+  .heart .heartIcon___2AF7i {
+    width: 35px;
+    height: 35px;
+    margin-left: 1px;
+    margin-top: 4px; }
+  .heart .icon___2c4Kt {
+    stroke: currentColor;
+    fill: white;
+    width: 35px;
+    height: 34px;
+    transition: all .1s ease-in-out .1s; }
+    .heart .icon___2c4Kt-selected {
+      fill: #f37121; }
+
+.show {
+  display: initial; }
+
+.hidden {
+  display: none; }
+
 .container {
   width: 100%;
   background-color: #f9f9f9;
@@ -391,62 +436,80 @@ h6 {
         box-shadow: 3px 3px 5px grey;
         cursor: pointer; }
 
-.card .title, .card .titleWrapper {
-  width: 100%;
-  display: flex; }
-  .card .title__marca, .card .titleWrapper__marca {
-    width: 65%;
-    margin: 0;
-    font-weight: 700; }
-  .card .title__price, .card .titleWrapper__price {
-    width: 35%;
-    margin: 0;
-    text-align: right;
-    font-weight: 700;
-    font-size: 1.5rem; }
-.card .subtitleWrapper {
-  width: 100%;
-  display: flex;
-  justify-content: space-between; }
-  .card .subtitleWrapper .subtitle__version {
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5; }
-  .card .subtitleWrapper .subtitle__monthlyPrice {
-    font-size: 1rem;
-    font-weight: 400;
-    text-align: right; }
-.card .features {
-  display: flex;
-  justify-content: space-between;
-  width: 100%; }
-  .card .features .feature-list {
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
+.card {
+  position: relative; }
+  .card .title, .card .titleWrapper {
+    width: 100%;
+    display: flex; }
+    .card .title__marca, .card .titleWrapper__marca {
+      width: 65%;
+      margin: 0;
+      font-weight: 700; }
+    .card .title__price, .card .titleWrapper__price {
+      width: 35%;
+      margin: 0;
+      text-align: right;
+      font-weight: 700;
+      font-size: 1.5rem; }
+  .card .subtitleWrapper {
+    width: 100%;
     display: flex;
-    overflow: hidden;
-    flex-wrap: wrap;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 0; }
-    .card .features .feature-list :first-child {
-      padding-left: 0;
-      margin-left: 0; }
-    .card .features .feature-list :last-child {
-      flex-basis: 100%;
-      margin-left: 0; }
-    .card .features .feature-list__item {
-      position: relative;
-      display: inline-block;
-      padding: 5px 14px 0 0;
-      margin: 0; }
-  .card .features .totalPrice {
-    padding-top: 2px;
-    white-space: nowrap;
-    text-align: right; }
+    justify-content: space-between; }
+    .card .subtitleWrapper .subtitle__version {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5; }
+    .card .subtitleWrapper .subtitle__monthlyPrice {
+      font-size: 1rem;
+      font-weight: 400;
+      text-align: right; }
+  .card .features {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; }
+    .card .features .feature-list {
+      list-style-type: disc;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      padding-inline-start: 40px;
+      display: flex;
+      overflow: hidden;
+      flex-wrap: wrap;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 0; }
+      .card .features .feature-list :first-child {
+        padding-left: 0;
+        margin-left: 0; }
+      .card .features .feature-list :last-child {
+        flex-basis: 100%;
+        margin-left: 0; }
+      .card .features .feature-list__item {
+        position: relative;
+        display: inline-block;
+        padding: 5px 14px 0 0;
+        margin: 0; }
+    .card .features .totalPrice {
+      padding-top: 2px;
+      white-space: nowrap;
+      text-align: right; }
+
+.card.card-carrito html {
+  font-size: 1.2vw; }
+
+.main__detail .card {
+  position: relative; }
+  .main__detail .card-img-top {
+    height: 400px; }
+  .main__detail .card-body {
+    padding: 20px 50px; }
+  .main__detail .card .img__a {
+    position: absolute;
+    top: 20px;
+    right: 20px; }
+    .main__detail .card .img__a i {
+      font-size: 1.875rem; }
 
 /*# sourceMappingURL=stylos.css.map */
