@@ -12,7 +12,7 @@
                         <img src="img/GM.jpg">
                         <h4>General Motors</h4>
                     </div>
-                    <div th:insert="fragments/parts::menu"></div>
+                    <div class="menu__navbar" th:insert="fragments/parts::menu"></div>
                     <!-- <h3>Encuentra tu coche al mejor precio</h3> -->
                     <ul class="menu__options">
                         <li><i class="fas fa-search" id="activar"></i></li>
@@ -76,10 +76,26 @@
         <main class="evr-main cars">
             <div class="main__content-cars">
                 <div th:each="v : ${vehiculos}" class="card">
-                	<a th:href="@{'/car/details?matricula='+${v.getMatricula()}}">
-                		<img class="card-img-top" th:unless="${v.imagenes.size() == 0}" th:src="@{'img/' + ${v.getArrayImagenes(0)}}">
-                    	<img class="card-img-top" th:if="${v.imagenes.size() == 0}" src="img/coche_generic.png">
-                	</a>
+                    <div class="card-img-container">
+                        <a th:href="@{'/car/details?matricula='+${v.getMatricula()}}">
+                            <img class="card-img-top" th:unless="${v.imagenes.size() == 0}" th:src="@{'img/' + ${v.getArrayImagenes(0)}}">
+                            <img class="card-img-top" th:if="${v.imagenes.size() == 0}" src="img/coche_generic.png">
+                        </a>
+                        <button class="heart btnheart" id="btnheart" th:value="${v.getId()}">
+                            <a th:href="@{'/favorite/addFavorite?coche='+${v.getMatricula()}}">
+                                <svg width="30" height="28" viewBox="-1 -1 30 28" xmlns="http://www.w3.org/2000/svg" class="icon___2c4Kt heartIcon___2AF7i">
+                                    <path d="M20.448 0c-2.679 0-5.137 1.454-6.472 3.69C12.43 1.336 10.12 0 7.547 0 3.385 0 0 3.389 0 7.554c0 .727.104 1.443.308 2.128.627 3.546 5.02 7.67 9.268 11.657 1.475 1.384 2.868 2.693 4.057 3.932a.87.87 0 001.402-.206c1.727-2.097 3.725-4.037 5.658-5.914 3.58-3.478 6.677-6.485 7.029-9.527A8.13 8.13 0 0028 7.554C28 3.389 24.612 0 20.448 0" stroke-width="2" fill-rule="evenodd">
+                                    </path>
+                                </svg>
+                            </a>
+                            <a th:href="@{'/favorite/removeFavorite?coche='+${v.getMatricula()}}" hidden>
+                                <svg width="30" height="28" viewBox="-1 -1 30 28" xmlns="http://www.w3.org/2000/svg" class="icon___2c4Kt heartIcon___2AF7i icon___2c4Kt-selected">
+                                    <path d="M20.448 0c-2.679 0-5.137 1.454-6.472 3.69C12.43 1.336 10.12 0 7.547 0 3.385 0 0 3.389 0 7.554c0 .727.104 1.443.308 2.128.627 3.546 5.02 7.67 9.268 11.657 1.475 1.384 2.868 2.693 4.057 3.932a.87.87 0 001.402-.206c1.727-2.097 3.725-4.037 5.658-5.914 3.58-3.478 6.677-6.485 7.029-9.527A8.13 8.13 0 0028 7.554C28 3.389 24.612 0 20.448 0" stroke-width="2" fill-rule="evenodd">
+                                    </path>
+                                </svg>
+                            </a>
+                        </button>
+                    </div>
                     <div class="card-body">
                         <div class="titleWrapper">
                             <h2 class="title__marca" th:text="${v.marca}"></h2>
@@ -101,20 +117,6 @@
                             <div class="totalPrice">Al contado</div>
                         </div>
                     </div>
-                    <button class="heart btnheart" id="btnheart" th:value="${v.getId()}">
-                        <a th:href="@{'/favorite/addFavorite?coche='+${v.getMatricula()}}">
-                            <svg width="30" height="28" viewBox="-1 -1 30 28" xmlns="http://www.w3.org/2000/svg" class="icon___2c4Kt heartIcon___2AF7i">
-                            	<path d="M20.448 0c-2.679 0-5.137 1.454-6.472 3.69C12.43 1.336 10.12 0 7.547 0 3.385 0 0 3.389 0 7.554c0 .727.104 1.443.308 2.128.627 3.546 5.02 7.67 9.268 11.657 1.475 1.384 2.868 2.693 4.057 3.932a.87.87 0 001.402-.206c1.727-2.097 3.725-4.037 5.658-5.914 3.58-3.478 6.677-6.485 7.029-9.527A8.13 8.13 0 0028 7.554C28 3.389 24.612 0 20.448 0" stroke-width="2" fill-rule="evenodd">
-                            	</path>
-                        	</svg>
-                        </a>
-                        <a th:href="@{'/favorite/removeFavorite?coche='+${v.getMatricula()}}" hidden>
-                            <svg width="30" height="28" viewBox="-1 -1 30 28" xmlns="http://www.w3.org/2000/svg" class="icon___2c4Kt heartIcon___2AF7i icon___2c4Kt-selected">
-                            	<path d="M20.448 0c-2.679 0-5.137 1.454-6.472 3.69C12.43 1.336 10.12 0 7.547 0 3.385 0 0 3.389 0 7.554c0 .727.104 1.443.308 2.128.627 3.546 5.02 7.67 9.268 11.657 1.475 1.384 2.868 2.693 4.057 3.932a.87.87 0 001.402-.206c1.727-2.097 3.725-4.037 5.658-5.914 3.58-3.478 6.677-6.485 7.029-9.527A8.13 8.13 0 0028 7.554C28 3.389 24.612 0 20.448 0" stroke-width="2" fill-rule="evenodd">
-                            	</path>
-                        	</svg>
-                        </a>
-                    </button>
                 </div>
             </div>
         </main>

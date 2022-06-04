@@ -1,7 +1,10 @@
 
 .card {
 
-    position: relative;
+    &-img-container {
+        position: relative;
+    }
+
     .title, .titleWrapper {
         width: 100%;
         display: flex;

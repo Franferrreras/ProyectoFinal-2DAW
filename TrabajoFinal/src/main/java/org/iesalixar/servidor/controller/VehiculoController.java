@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import org.iesalixar.servidor.models.ImgVehicle;
 import org.iesalixar.servidor.models.Vehicle;
+import org.iesalixar.servidor.services.ImgVehicleServiceImpl;
 import org.iesalixar.servidor.services.VehicleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,8 @@ public class VehiculoController {
 	@Autowired
 	VehicleServiceImpl vehiculoService;
 	
-	
+	@Autowired
+	ImgVehicleServiceImpl imgService;
 	
 	@GetMapping("/add")
 	public String addVehiculo(Model model) {
@@ -110,4 +112,37 @@ public class VehiculoController {
 		
 		return "detailVehiculo";
 	}
+	
+	@PostMapping("/details/addIMG")
+	public String addIMG(@RequestParam("file") MultipartFile imagen, @RequestParam("matricula") String matricula) {
+		
+		Vehicle vehiculoDB = vehiculoService.getVehicleByMatrucula(matricula);
+		
+		if (!imagen.isEmpty() && imgService.findImgByImg(imagen.getOriginalFilename()) == null ) {
+			Path directorioImg = Paths.get("src//main//resources//static/img");
+			String rutaAbsoluta = directorioImg.toFile().getAbsolutePath();
+			ImgVehicle imgV = new ImgVehicle();
+
+			try {
+				
+				byte[] bytesImg = imagen.getBytes();
+				Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
+				Files.write(rutaCompleta,bytesImg);
+				
+				imgV.setImagen(imagen.getOriginalFilename());
+				
+				
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			vehiculoDB.addImg(imgV);
+			vehiculoService.updateVehicle(vehiculoDB);
+		}
+		return "redirect:/car/details?matricula="+vehiculoDB.getMatricula();
+		
+	}
+	
 }

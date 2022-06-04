@@ -39,31 +39,36 @@ public class ApiRestController {
 	@GetMapping("/2")
 	public ArrayList<Cart> cart(Authentication auth, HttpSession session) {
 
-		String username = auth.getName();
-
-		Customer customer = null;
-
-		if (session.getAttribute("usuario") == null) {
-			Usuario usuario = usuarioService.findUsuarioByUserName(username);
-			usuario.setPassword(null);
-			session.setAttribute("usuario", usuario);
-			customer = customerService.findCustomerByName(usuario.getUserName());
-		} 
-//		else {
-//			customer = customerService.findCustomerByName(username);
-//		}
-		
-		if (username!=null) {
-			customer = customerService.findCustomerByName(username);
-		}
-
 		ArrayList<Cart> cart = new ArrayList<>();
+		
+		if (auth != null) {
+			String username = auth.getName();
 
-		if (customer != null) {
-			for (Cart c : customer.getCart()) {
-				cart.add(c);
-			}
+			Customer customer = null;
+
+			if (session.getAttribute("usuario") == null) {
+				Usuario usuario = usuarioService.findUsuarioByUserName(username);
+				usuario.setPassword(null);
+				session.setAttribute("usuario", usuario);
+				customer = customerService.findCustomerByName(usuario.getUserName());
+			} 
+//			else {
+//				customer = customerService.findCustomerByName(username);
+//			}
 			
+			if (username!=null) {
+				customer = customerService.findCustomerByName(username);
+				
+				if (customer != null) {
+					for (Cart c : customer.getCart()) {
+						cart.add(c);
+					}
+					
+					return cart;
+				}
+				
+			}
+
 			return cart;
 		}
 

@@ -20,7 +20,7 @@ public class ImgVehicleServiceImpl implements ImgVehicleService {
 	@Override
 	public ImgVehicle findImgByImg(String img) {
 		// TODO Auto-generated method stub
-		return null;
+		return imgVRepo.findImgVehicleByImagen(img);
 	}
 
 }

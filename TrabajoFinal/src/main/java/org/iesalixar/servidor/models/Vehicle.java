@@ -2,6 +2,7 @@ package org.iesalixar.servidor.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -196,24 +197,26 @@ public class Vehicle implements Serializable {
 			list_imgs = new ArrayList<>();
 			for (ImgVehicle i : imagenes) {
 				list_imgs.add(i);
-
-				return list_imgs.get(num).getImagen();
 			}
+			Collections.sort(list_imgs);
+			return list_imgs.get(num).getImagen();
 		}
 		return "nada";
 	}
 	
+	@JsonIgnore
 	public ArrayList<ImgVehicle> getListImagenes() {
 
-		ArrayList<ImgVehicle> list_imgs = null;
+		ArrayList<ImgVehicle> list_imgs = new ArrayList<>();
 		if (this.imagenes.size() > 0) {
 
 			list_imgs = new ArrayList<>();
 			for (ImgVehicle i : imagenes) {
+				
 				list_imgs.add(i);
-
-				return list_imgs;
 			}
+			Collections.sort(list_imgs);
+			return list_imgs;
 		}
 		return null;
 	}

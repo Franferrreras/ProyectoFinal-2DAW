@@ -33,7 +33,7 @@ public class VehicleServiceImpl implements VehicleService {
 	@Override
 	public Vehicle updateVehicle(Vehicle vehicle) {
 		// TODO Auto-generated method stub
-		return null;
+		return vehicleRepo.save(vehicle);
 	}
 
 	@Override

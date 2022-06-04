@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "imagenes_vehiculo")
-public class ImgVehicle implements Serializable {
+public class ImgVehicle implements Serializable, Comparable<ImgVehicle> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,5 +59,18 @@ public class ImgVehicle implements Serializable {
 	@Override
 	public String toString() {
 		return "id=" + id + ", imagen=" + imagen;
+	}
+
+	@Override
+	public int compareTo(ImgVehicle o) {
+		// TODO Auto-generated method stub
+		
+		if (o.getId() > id) {
+			return -1;
+		} else if (o.getId() > id) {
+			return 0;
+		} else {
+			return 1;
+		}
 	}
 }
