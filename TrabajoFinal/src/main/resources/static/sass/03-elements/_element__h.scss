@@ -1,0 +1,23 @@
+.subTitle {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 8px;
+    text-align: center;
+    color: #003e70;
+
+    &__h1 {
+        font-size:rem(24);
+    }
+
+    &::after {
+        display: block;
+        content: "";
+        position: relative;
+        top: 4px;
+        height: 2px;
+        width: 50px;
+        margin: auto;
+        border-radius: 2px;
+        background-color: #f37121;
+    }
+}

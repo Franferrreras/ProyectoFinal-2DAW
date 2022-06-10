@@ -30,9 +30,8 @@ public class OrderDetail implements Serializable {
 	@JsonIgnore
 	private Vehicle vehicle;
 
-	@Id
 	@ManyToOne
-	@JoinColumn(name = "id_comercial", insertable = false)
+	@JoinColumn(name = "id_comercial", insertable = false, updatable = false)
 	private Comercial comercial;
 
 	private Date reservaDate;

@@ -5,10 +5,21 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.iesalixar.servidor.models.Comercial;
+import org.iesalixar.servidor.models.Customer;
 import org.iesalixar.servidor.models.ImgVehicle;
+import org.iesalixar.servidor.models.OrderDetail;
+import org.iesalixar.servidor.models.Usuario;
 import org.iesalixar.servidor.models.Vehicle;
+import org.iesalixar.servidor.services.ComercialServiceImpl;
+import org.iesalixar.servidor.services.CustomerServiceImpl;
 import org.iesalixar.servidor.services.ImgVehicleServiceImpl;
+import org.iesalixar.servidor.services.OrderDetailServiceImpl;
 import org.iesalixar.servidor.services.VehicleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +40,17 @@ public class VehiculoController {
 	
 	@Autowired
 	ImgVehicleServiceImpl imgService;
+	
+	@Autowired
+	ComercialServiceImpl comercialService;
+	
+	@Autowired
+	CustomerServiceImpl customerService;
+	
+	@Autowired
+	OrderDetailServiceImpl orderdService;
+	
+	Calendar calendar = Calendar.getInstance();
 	
 	@GetMapping("/add")
 	public String addVehiculo(Model model) {
@@ -145,4 +167,71 @@ public class VehiculoController {
 		
 	}
 	
+	@GetMapping("/payment")
+	public String payment(@RequestParam(name="matricula", required = false) String matricula, Model model) {
+		
+		Vehicle carDB = vehiculoService.getVehicleByMatrucula(matricula);
+		
+		model.addAttribute("vehiculo", carDB);
+		
+		return "reserva";
+	}
+	
+	
+	@PostMapping("/payment")
+	public String paymentPost(@RequestParam(name="matricula", required = false) String matricula, HttpSession session) {
+		
+		
+		if (session.getAttribute("usuario") != null)  {
+			List<Comercial> list_comercial = comercialService.getAllComercial();
+			
+			int num_aleatorio = (int) (Math.random() * list_comercial.size());
+			
+			Comercial comercialDB = list_comercial.get(0);
+			System.out.println(comercialDB);
+			
+			Vehicle carDB = vehiculoService.getVehicleByMatrucula(matricula);
+			System.out.println(carDB);
+			
+			if (carDB.getStatus().equals("venta")) {
+				
+				Usuario userDB = (Usuario) session.getAttribute("usuario");
+				
+				Customer customerDB = customerService.findCustomerByName(userDB.getUserName());
+				
+				System.out.println(userDB);
+				
+				System.out.println(customerDB);
+				
+				
+				
+//				OrderDetail orderDetailDB = new OrderDetail();
+//				
+//				orderDetailDB.setComercial(comercialDB);
+//				orderDetailDB.setCustomer(customerDB);
+//				orderDetailDB.setVehicle(carDB);
+//				orderDetailDB.setReservaDate(calendar.getTime());
+				
+				customerDB.assingVehicle(carDB, calendar.getTime(), comercialDB);
+				
+				orderdService.insertOrderDetail2(customerDB.getId(), carDB.getId(),carDB.getPrice(),calendar.getTime(),null,null, comercialDB.getId());
+//				orderdService.insertOrderDetail(orderDetailDB);
+				
+				return "redirect:/";
+				
+			}
+			
+			//customerDB.assingVehicle(carDB, calendar.getTime(), comercialDB);
+			
+//			customerService.updateCustomer(customerDB);
+			
+			
+		} else {
+			return "redirect:/login";
+		}
+		
+		return "redirect:/";
+	}
 }
+	
+

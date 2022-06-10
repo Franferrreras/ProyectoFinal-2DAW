@@ -10,12 +10,14 @@
 @import "03-elements/_elements__image";
 @import "03-elements/element__li";
 @import "03-elements/element__i";
+@import "03-elements/element__h";
 @import "03-elements/element__headings";
 @import "04-objects/_object__content-icon";
 @import "04-objects/_object__logo";
 @import "04-objects/object__slider";
 @import "04-objects/object__perfil";
 @import "04-objects/object__heart";
+@import "05-components/components__service";
 @import "05-components/components__container";
 @import "05-components/_components__header";
 @import "05-components/components__filtre";
@@ -26,3 +28,8 @@
 @import "05-components/components_card-vehiculo";
 @import "05-components/components__cart";
 @import "05-components/components__detail";
+@import "05-components/components__shield";
+@import "05-components/components__payment";
+@import "05-components/components__profile";
+@import "05-components/components__nav-profile";
+

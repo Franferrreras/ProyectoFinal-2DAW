@@ -3,3 +3,8 @@
     background-color: color(secondary);
     position: relative;
 }
+
+body {
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@200&family=Merriweather:wght@300&family=Source+Serif+Pro:wght@300&display=swap');
+    font-family: 'Lato', sans-serif;
+}

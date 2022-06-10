@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/bootstrap::head(title='Main')"></head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="/css/stylos.css">
+<body>
+    <div class="container-fluid service">
+        <header th:insert="fragments/head::header"></header>
+        <main class="service">
+            <div class="serviceTitle">
+                <h1 class="service__title">Compra tu coche con GeneralMotors: ¡Así funciona!</h1>
+            </div>
+            <div class="serviceContent">
+                <div class="serviceSubtitle">
+                    <h2 class="service__subtitle">En solo 4 pasos tendras tu coche nuevo</h2>
+                </div>
+                <section class="stepContainer">
+                    <div class="step">
+                        <h3 class="step__title">Primer paso: Haz tu pedido</h3>
+                        <div class="step__content">
+                            <img src="/img/service/mobile1.jpg">
+                            <div class="step__description">
+                                <p>
+                                    En GeneralMotors puedes encontrar el coche de tus sueños! 
+                                    Te ofrecemos todas las marcas y modelos y además, nuestros 
+                                    coches están sujetos a los estándares de calidad de GeneralMotors 
+                                    más exigentes. Encuentra tu nuevo coche entre una selección de 
+                                    más de 1.000.
+                                </p>
+                                <p>
+                                    Visita ahora nuestro showroom online y descubre todos las 
+                                    características de tu coche. Es como estar sentado en el coche 
+                                    pero de forma virtual. Una vez lo hayas elegido, haz clic en 'Compra ahora'. 
+                                    Durante el pedido podrás escoger las opciones de entrega, el método 
+                                    de pago y los servicios adicionales que mejor encajen con tus necesidades.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="stepContainer">
+                    <div class="step">
+                        <h3 class="step__title">Segundo paso: Pago</h3>
+                        <div class="step__content">
+                            <img src="/img/service/mobile2.jpg">
+                            <div class="step__description">
+                                <p>
+                                    ¡Tienes el control absoluto! Puedes adaptar el método de pago 
+                                    a tus necesidades. Pagas una señal de 300 € online de forma 
+                                    segura y luego pagas el resto por transferencia bancaria.
+                                    ¿Quieres financiación? Autohero te ofrece opciones flexibles
+                                    adaptadas a lo que necesites.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="stepContainer">
+                    <div class="step">
+                        <h3 class="step__title">Tercer paso: Envío</h3>
+                        <div class="step__content">
+                            <img src="/img/service/transporte2.jpg" alt="">
+                            <div class="step__description">
+                                <p>
+                                    Da igual en que parte de la península vivas, ¡Nosotros te lo 
+                                    llevamos! Mientras realizas el pedido puedes elegir fácilmente 
+                                    la opción de entrega que mejor se adapte a ti.
+                                </p>
+                                <p>
+                                    Recoge tu coche en uno de nuestros centros de entrega o te lo 
+                                    llevamos a casa. Te informaremos en cuanto tu coche esté de camino. 
+                                    En este momento sólo tendrás que pedir una cita para la 
+                                    entrega o esperar a que te lo entreguemos en tu casa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="stepContainer">
+                    <div class="step">
+                        <h3 class="step__title">Cuarto paso: Entrega</h3>
+                        <div class="step__content">
+                            <img src="/img/service/entrega.jpg" alt="">
+                            <div class="step__description">
+                                <p>
+                                    Buenas noticias: ¡Tu coche nuevo ha llegado! Asegúrate de verificar 
+                                    durante la entrega que el vehículo cumple con tus expectativas y estés 
+                                    seguro de que puedes disfrutarlo al máximo. Si no estás completamente 
+                                    satisfecho, siempre puedes recurrir a nuestra garantía de 
+                                    devolución de 21 días. El importe abonado se te reembolsará en su 
+                                    totalidad. Tu nuevo coche viene matriculado a tu nombre lo que 
+                                    significa que puedes conducirlo inmediatamente, sin preocupaciones 
+                                    ¡Disfruta de tu nuevo coche!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-white shield">
+                    <h2>Datos Básicos</h2>
+                    <div class="shield__inner">
+                        <div class="shield__item">
+                            <div class="shield__title">
+                                <i class='bx bx-shield' style='color:#ef7b34' ></i>
+                                <h4>Cómodo</h4>
+                            </div>
+                            <div class="garantee">
+                                Compra fácilmente tu coche online. Te lo traemos directamente a tu casa o a cualquier sitio en toda la península.
+                            </div>
+                        </div>
+                        <div class="shield__item">
+                            <div class="shield__title">
+                                <i class='bx bx-shield' style='color:#ef7b34' ></i>
+                                <h4>Seguro</h4>
+                            </div>
+                            <div class="garantee">
+                                Con nosotros estás perfectamente cubierto en todo momento - con una garantía de devolución de 21 días y con una garantía de 12 meses incluida.
+                            </div>
+                        </div>
+                        <div class="shield__item">
+                            <div class="shield__title">
+                                <i class='bx bx-shield' style='color:#ef7b34' ></i>
+                                <h4>Personalizado</h4>
+                            </div>
+                            <div class="garantee">
+                                Con nosotros tienes control absoluto. Desde opciones de financiación hasta el cambio de titularidad, haces el pedido a tu gusto.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+</html> 

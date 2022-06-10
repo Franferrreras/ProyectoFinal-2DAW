@@ -1,18 +1,20 @@
 .menu__lateral {
-    background-color: color(therciary);
+    background-color: color(white);
     width: 100%;
     max-width: 250px;
     height: 100vh;
     padding: 2px;
     margin-top: -90px;
     border-radius: 2px;
+    transition: max-width.3s ease;
+    position: relative;
 
     &-item{
         margin: 5px 0px;
         border: 1px solid color(greey-3);
-        background-color: color(secondary);
-        padding: 10px;
-
+        background-color: #ffffff;
+        padding: 10px 15px;
+        border-radius: 4px;
         &:hover {
             background-color: color(primary);
             color: color(secondary);
@@ -30,10 +32,27 @@
             align-items: center;
             color: #a8a8a8;
             font-weight: 570;
-
+            span {
+                width: 100%;
+                padding: 0 45px;
+            }
             i {
                 font-size: 1.4rem;
             }
         }
+    }
+
+    .toggle {
+        position:absolute;
+        top: 0;
+        right: 0;
+
+        i {
+            font-size: rem(34);
+        }
+    }
+
+    .close {
+        display: none;
     }
 }

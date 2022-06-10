@@ -9,7 +9,7 @@ public class OrderDetailId implements Serializable {
 
 	private Long customer;
 	private Long vehicle;
-	
+
 	public OrderDetailId() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -47,5 +47,5 @@ public class OrderDetailId implements Serializable {
 		OrderDetailId other = (OrderDetailId) obj;
 		return Objects.equals(customer, other.customer) && Objects.equals(vehicle, other.vehicle);
 	}
-	
+
 }

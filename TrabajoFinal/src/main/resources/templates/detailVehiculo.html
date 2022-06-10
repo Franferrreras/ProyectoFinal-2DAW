@@ -2,8 +2,9 @@
 <html>
 <head th:replace="fragments/bootstrap::head(title='Main')"></head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/stylos.css">
 <body>
-	<div class="container-fluid">
+	<div class="container-fluid detail">
 		<header class="evr-header details">
             <nav class="evr-header__menu menu">
                 <section class="menu__container-top">
@@ -31,28 +32,28 @@
                             <label for="imagen" id="newInput"><i class='bx bx-image-add' style='color:#5c5858'></i></label>
                 		    <input type="file" class="form-control" id="imagen" name="file">
                 		    <input type="text" name="matricula" th:value="${vehiculo.getMatricula()}" hidden>
-                            <input type="submit" value="add +" id="btn-addImg">
+                            <input type="submit" value="add +" id="btn-addImg" class="btn-addImg">
                         </div>
                 	</form>
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     	<div class="carousel-inner">
-                    		<div class="carousel-item" th:each="i : ${vehiculo.getListImagenes()}" th:unless="${vehiculo.imagenes.size() == 0}">
-                            	<img class="d-block w-100 " th:src="@{'/img/' + ${i.getImagen()}}">
+                    	    <div class="carousel-item" th:each="i : ${vehiculo.getListImagenes()}" th:unless="${vehiculo.imagenes.size() == 0}">
+                                <img class="d-block w-100 " th:src="@{'/img/' + ${i.getImagen()}}">
                         	</div>
                             <div class="carousel-item" th:if="${vehiculo.imagenes.size() == 0}">
-                            	<img class="d-block w-100 no-img" src="../img/coche_generic.png">
+                            	<img class="d-block w-100 no-img" src="../img/generic_v3.png">
                         	</div>
                     	</div>
                    	     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                        		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
    							<span class="sr-only">Previous</span>
                        	</a>
-                       	 <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                       	<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
 						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 						    <span class="sr-only">Next</span>
  						</a>
                     </div>
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                         <div class="titleWrapper">
                             <h2 class="title__marca" th:text="${vehiculo.marca}"></h2>
                             <div class="title__price" th:text="${vehiculo.price}"></div>
@@ -72,22 +73,123 @@
                             </div>
                             <div class="totalPrice">Al contado</div>
                         </div>
-                    </div>
-                    <button class="heart btnheart" id="btnheart" th:value="${vehiculo.getId()}">
-                        <a th:href="@{'/favorite/addFavorite?coche='+${vehiculo.getMatricula()}}">
-                            <svg width="30" height="28" viewBox="-1 -1 30 28" xmlns="http://www.w3.org/2000/svg" class="icon___2c4Kt heartIcon___2AF7i">
-                            	<path d="M20.448 0c-2.679 0-5.137 1.454-6.472 3.69C12.43 1.336 10.12 0 7.547 0 3.385 0 0 3.389 0 7.554c0 .727.104 1.443.308 2.128.627 3.546 5.02 7.67 9.268 11.657 1.475 1.384 2.868 2.693 4.057 3.932a.87.87 0 001.402-.206c1.727-2.097 3.725-4.037 5.658-5.914 3.58-3.478 6.677-6.485 7.029-9.527A8.13 8.13 0 0028 7.554C28 3.389 24.612 0 20.448 0" stroke-width="2" fill-rule="evenodd">
-                            	</path>
-                        	</svg>
-                        </a>
-                        <a th:href="@{'/favorite/removeFavorite?coche='+${vehiculo.getMatricula()}}" hidden>
-                            <svg width="30" height="28" viewBox="-1 -1 30 28" xmlns="http://www.w3.org/2000/svg" class="icon___2c4Kt heartIcon___2AF7i icon___2c4Kt-selected">
-                            	<path d="M20.448 0c-2.679 0-5.137 1.454-6.472 3.69C12.43 1.336 10.12 0 7.547 0 3.385 0 0 3.389 0 7.554c0 .727.104 1.443.308 2.128.627 3.546 5.02 7.67 9.268 11.657 1.475 1.384 2.868 2.693 4.057 3.932a.87.87 0 001.402-.206c1.727-2.097 3.725-4.037 5.658-5.914 3.58-3.478 6.677-6.485 7.029-9.527A8.13 8.13 0 0028 7.554C28 3.389 24.612 0 20.448 0" stroke-width="2" fill-rule="evenodd">
-                            	</path>
-                        	</svg>
-                        </a>
-                    </button>
+                    </div> -->
                 </div>
+                <section class="vehicle__genericInfo bg-white">
+                    <div class="vehicle__genericInfo__inner">
+                        <div class="wrapper-title">
+                            <h1 class="title" th:text="${vehiculo.marca} + ' - ' + ${vehiculo.modelo}"></h1>
+                            <h2 class="subTitle" th:text="${vehiculo.version}"></h2>
+                        </div>
+                        <div class="wrapper-icons">
+                            <button class="heart btnheart" id="btnheart" th:value="${vehiculo.getId()}">
+                                <a th:href="@{'/favorite/addFavorite?coche='+${vehiculo.getMatricula()}}">
+                                    <svg width="30" height="28" viewBox="-1 -1 30 28" xmlns="http://www.w3.org/2000/svg" class="icon___2c4Kt heartIcon___2AF7i">
+                                        <path d="M20.448 0c-2.679 0-5.137 1.454-6.472 3.69C12.43 1.336 10.12 0 7.547 0 3.385 0 0 3.389 0 7.554c0 .727.104 1.443.308 2.128.627 3.546 5.02 7.67 9.268 11.657 1.475 1.384 2.868 2.693 4.057 3.932a.87.87 0 001.402-.206c1.727-2.097 3.725-4.037 5.658-5.914 3.58-3.478 6.677-6.485 7.029-9.527A8.13 8.13 0 0028 7.554C28 3.389 24.612 0 20.448 0" stroke-width="2" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </a>
+                                <a th:href="@{'/favorite/removeFavorite?coche='+${vehiculo.getMatricula()}}" hidden>
+                                    <svg width="30" height="28" viewBox="-1 -1 30 28" xmlns="http://www.w3.org/2000/svg" class="icon___2c4Kt heartIcon___2AF7i icon___2c4Kt-selected">
+                                        <path d="M20.448 0c-2.679 0-5.137 1.454-6.472 3.69C12.43 1.336 10.12 0 7.547 0 3.385 0 0 3.389 0 7.554c0 .727.104 1.443.308 2.128.627 3.546 5.02 7.67 9.268 11.657 1.475 1.384 2.868 2.693 4.057 3.932a.87.87 0 001.402-.206c1.727-2.097 3.725-4.037 5.658-5.914 3.58-3.478 6.677-6.485 7.029-9.527A8.13 8.13 0 0028 7.554C28 3.389 24.612 0 20.448 0" stroke-width="2" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </a>
+                            </button>
+                        </div>
+                        <div class="wrapper-price">
+                            <div class="vehiclePriceContainer">
+                                <p class="vehiclePrice__label" th:text="'Precio al contado'"></p>
+                                <p class="vehiclePrice" th:text="${vehiculo.price}"></p>
+                            </div>
+                            <div class="vehiclePriceContainer">
+                                <p class="vehiclePrice__label" th:text="'Precio financiado'"></p>
+                                <p class="vehiclePrice" th:text="${vehiculo.getFinancedPrice()}"></p>
+                            </div>
+                            <div class="vehiclePriceContainer-3">
+                                <a th:href="@{'/car/payment?matricula='+${vehiculo.getMatricula()}}" method="get">
+                                    <button class=" btn btn__buy" th:href="@{/car/payment}">Comprar</button>
+                                </a>
+                                <button class="btn__cLink">contactar</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="vehicle__garantee bg-white shield">
+                    <div class="vehicle__garantee__inner shield__inner">
+                        <div class="vehicle__garantee__item shield__item">
+                            <div class="garantee__title shield__title">
+                                <i class='bx bx-shield' style='color:#ef7b34' ></i>
+                                <h4>Calidad Garantizada</h4>
+                            </div>
+                            <div class="garantee">
+                                Nuestras revisiones exhaustivas y nuestro estricto estándar de calidad garantizan la máxima calidad de nuestros vehículos.
+                            </div>
+                        </div>
+                        <div class="vehicle__garantee__item shield__item">
+                            <div class="garantee__title shield__title">
+                                <i class='bx bx-shield' style='color:#ef7b34' ></i>
+                                <h4>Compra Segura</h4>
+                            </div>
+                            <div class="garantee">
+                                Ofrecemos una garantía estándar de 1 año y una garantía de devolución de 21 días en todos nuestros vehículos.
+                            </div>
+                        </div>
+                        <div class="vehicle__garantee__item shield__item">
+                            <div class="garantee__title shield__title">
+                                <i class='bx bx-shield' style='color:#ef7b34' ></i>
+                                <h4>Entrega gratuita</h4>
+                            </div>
+                            <div class="garantee">
+                                Hacemos entregas en toda la península, te traemos el coche a tu casa o lo puedes recoger cómodamente en un punto de entrega.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="vehicle__basicDate bg-white">
+                    <div class="vehicle__basicDate__inner">
+                        <h3>Datos Básicos</h3>
+                        <div class="basicDate__container">
+                            <div class="basicDate__item">
+                                <span class="basicDate__item-icon matricula"></span>
+                                <div class="basicDate">
+                                    <h5>Primera Matriculacion</h5>
+                                    <span th:text="${vehiculo.matricula}"></span>
+                                </div>
+                            </div>
+                            <div class="basicDate__item">
+                                <span class="basicDate__item-icon kilometraje"></span>
+                                <div class="basicDate">
+                                    <h5>Kilometraje</h5>
+                                    <span th:text="${vehiculo.kilometros}"></span>
+                                </div>
+                            </div>
+                            <div class="basicDate__item">
+                                <span class="basicDate__item-icon carburante"></span>
+                                <div class="basicDate">
+                                    <h5>Carburante</h5>
+                                    <span th:text="${vehiculo.combustible}"></span>
+                                </div>
+                            </div>
+                            <div class="basicDate__item">
+                                <span class="basicDate__item-icon transmision"></span>
+                                <div class="basicDate">
+                                    <h5>Transmisión</h5>
+                                    <span th:if="${vehiculo.transmision != null}" th:text="${vehiculo.transmision}"></span>
+                                    <span th:unless="${vehiculo.transmision != null}" th:text="'Sin información'"></span>
+                                </div>
+                            </div>
+                            <div class="basicDate__item">
+                                <span class="basicDate__item-icon potencia"></span>
+                                <div class="basicDate">
+                                    <h5>Potencia</h5>
+                                    <span th:unless="${vehiculo.potencia == null}" th:text="${vehiculo.potencia}"></span>
+                                    <span th:if="${vehiculo.potencia == null}" th:text="'Sin información'"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
 		</main>
 	</div>
@@ -95,7 +197,6 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
-<link rel="stylesheet" href="/css/stylos.css">
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 <script src="/js/detail.js"></script>
 </html>

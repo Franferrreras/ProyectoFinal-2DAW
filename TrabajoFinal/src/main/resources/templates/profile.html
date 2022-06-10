@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/bootstrap::head(title='Dashboard')">
+</head>
+<link rel="stylesheet" href="/css/stylos.css">
+<body>
+	<div class="container-fluid">
+        <header th:replace="fragments/head::header"></header>
+        <main>
+            <section class="profile__container">
+                <div class="profile__inner edit">
+                    <div th:replace="fragments/navprofile::nav"></div>
+                    <div class="profile__content">
+                        <h1 class="subTitle subTitle__h1">Información del perfil</h1>
+                        <form action="">
+                            <div class="profile__dates">
+                                <div class="profile__dates__basic">
+                                    <div class="profile__dates__basic__container">
+                                        <div class="form-group">
+                                            <label for="username">Nombre</label>
+                                            <input class="form-control" type="text" name="username" th:placeholder="${session.usuario.nombre}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="surnames">Apellidos</label>
+                                            <input class="form-control" type="text" name="surnames" th:placeholder="${session.usuario.apellidos}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone">Telefono</label>
+                                            <input class="form-control" type="text" name="phone" th:placeholder="${session.usuario.phone}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile__dates__relevant">
+                                    <div class="form-group">
+                                        <div class="">Email:</div>
+                                        <div>
+                                            <span th:text="${session.usuario.email}"></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div>Eliminar tu cuenta</div>
+                                        <button>Pulsa aquí para eliminar la cuenta</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</html>

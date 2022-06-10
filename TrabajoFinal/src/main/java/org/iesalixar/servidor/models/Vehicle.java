@@ -40,6 +40,12 @@ public class Vehicle implements Serializable {
 	@Column(nullable = false)
 	private String version;
 
+	@Column
+	private String transmision;
+
+	@Column
+	private String potencia;
+
 	@Column(nullable = false)
 	private String combustible;
 
@@ -53,7 +59,7 @@ public class Vehicle implements Serializable {
 	private String kilometros;
 
 	@Column(nullable = false)
-	private double price;
+	private int price;
 
 	@ManyToOne
 	@JoinColumn(name = "id_store")
@@ -165,11 +171,11 @@ public class Vehicle implements Serializable {
 		this.orderDetails = orderDetails;
 	}
 
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
@@ -189,6 +195,22 @@ public class Vehicle implements Serializable {
 		this.cart = cart;
 	}
 
+	public String getTransmision() {
+		return transmision;
+	}
+
+	public void setTransmision(String transmision) {
+		this.transmision = transmision;
+	}
+
+	public String getPotencia() {
+		return potencia;
+	}
+
+	public void setPotencia(String potencia) {
+		this.potencia = potencia;
+	}
+
 	public String getArrayImagenes(int num) {
 
 		ArrayList<ImgVehicle> list_imgs = null;
@@ -203,7 +225,7 @@ public class Vehicle implements Serializable {
 		}
 		return "nada";
 	}
-	
+
 	@JsonIgnore
 	public ArrayList<ImgVehicle> getListImagenes() {
 
@@ -212,13 +234,21 @@ public class Vehicle implements Serializable {
 
 			list_imgs = new ArrayList<>();
 			for (ImgVehicle i : imagenes) {
-				
+
 				list_imgs.add(i);
 			}
 			Collections.sort(list_imgs);
 			return list_imgs;
 		}
 		return null;
+	}
+
+	@JsonIgnore
+	public int getFinancedPrice() {
+
+		int financiacion = (int) (price * 0.91);
+
+		return financiacion;
 	}
 
 	@Override

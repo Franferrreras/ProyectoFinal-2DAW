@@ -1,0 +1,172 @@
+body {
+    background-color: rgb(247, 244, 244);
+}
+.payment {
+
+    .title {
+        width: 50%;
+        margin: 0 auto;
+        padding: 32px 15px;
+        color: color(blue-1);
+        font-size: 2.875rem;
+        font-weight: 600;
+        text-align: center;
+        line-height: 1.5 !important;
+    }
+    .pago {
+        margin: 0 auto;
+        max-width: 400px !important;
+        color: color(greey-4);
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #ffffff;
+    
+        .date {
+    
+            &Card {
+    
+                display: flex;
+                justify-content: center;
+                flex-direction:column;
+                text-align: left !important;
+                border-collapse: collapse;
+        
+                label {
+                    background-color: orange !important;
+                }
+    
+                &__titular {
+                    width: 100%;
+                    margin-bottom: 15px;
+                    padding: 0 10px;
+                    input {
+                        background-color: transparent !important;
+                        width: 100% !important;
+                        text-align: left !important;
+    
+                        &::placeholder {
+                            color: black !important;
+                        }
+                    }
+                }
+        
+                &__num {
+                    position: relative;
+                    width: 100%;
+                    border-bottom: 1px solid #d4d4d4;
+    
+                    input {
+                        
+                        &::placeholder {
+                            content: "1234 - 1234 - 1234 12345"
+                        }
+                    }
+        
+                    ul {
+                        position: absolute;
+                        display: flex;
+                        justify-content: flex-start;
+                        top: 0;
+                        right: 0;
+                    }
+                }
+    
+                &__date {
+                    display: flex;
+                    flex-wrap: nowrap !important;
+                    position: relative;
+    
+                    ul {
+                        position: absolute;
+                        display: flex;
+                        justify-self: flex-start;
+                        top: 0;
+                        right: 0;
+                    }
+    
+                    div {
+                        &:first-child {
+                            border-right: 1px solid #d4d4d4 !important;
+                        }
+                    }
+    
+                    &-container {
+                        border: 1px solid #d4d4d4 !important;
+                        border-radius: 3px;
+                        overflow: hidden;
+                    }
+    
+                }
+
+                form {
+                    width: 100%;
+                }
+                .btn-paymnetcard {
+                    background: rgb(50,146,164);
+                    background: linear-gradient(196deg, rgba(50,146,164,1) 0%, rgba(37,164,150,1) 50%, rgba(93,204,147,1) 100%);
+                    padding: 10px;
+                    margin-top: 15px;
+                    border-radius: 4px;
+                    color: color(white) !important;
+                    font-weight: 800;
+                    
+                }
+    
+            }
+
+            &Bizum {
+                &__product {
+                    font-size: rem(20);
+                }
+
+                &__price {
+                    font-size: rem(30);
+                    font-weight: 600;
+                }
+            }
+        }
+    
+        &__bizum {
+            color: color(greey-4) !important;
+            border-bottom: 2px solid #d4d4d4 !important;
+            &-btn {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                padding: 7px;
+                margin-top: 20px;
+                background-color: color(greey-4) !important;
+                color: color(white) !important;
+                border: 1px solid #d4d4d4 !important;
+                border-radius: 5px;
+                font-family: 'Muli', sans-serif;
+
+            }
+        }
+    
+        fieldset {
+            position: relative;
+            justify-content: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            legend {
+                position: absolute;
+                background-color: color(white) !important;
+                padding: 0 15px;
+                width: auto;
+                top: 0;
+                margin-top: -15px;
+            }
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            margin:0;
+            color: gray !important;
+        }
+    }
+}

@@ -3,4 +3,19 @@
     html {
         font-size: 1.2vw;
     }
+
+
+
+}
+
+.cart {
+    .profile__nav__item:nth-child(2) {
+        color: color(blue-1);
+        font-weight: 600;
+    
+        i.bx.bx-chevron-right {
+            color: color(blue-1) !important;
+            font-weight: 600;
+        }
+    }
 }
