@@ -2,7 +2,9 @@ body {
     background-color: rgb(247, 244, 244);
 }
 .payment {
-
+    main {
+        display: inherit;
+    }
     .title {
         width: 50%;
         margin: 0 auto;

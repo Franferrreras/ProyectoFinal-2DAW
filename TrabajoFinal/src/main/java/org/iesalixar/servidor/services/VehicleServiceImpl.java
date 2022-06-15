@@ -48,4 +48,18 @@ public class VehicleServiceImpl implements VehicleService {
 		return vehicleRepo.findVehicleByMatricula(matricula);
 	}
 
+	@Override
+	public List<Vehicle> getFiltredVehicles(String marca, String precio1, String precio2, String year1, String year2,
+			String combustible) {
+		// TODO Auto-generated method stub
+		return vehicleRepo.filtro(marca, precio1, precio2, year1, year2, combustible);
+	}
+
+	@Override
+	public Vehicle getVehicleById(Long id) {
+		// TODO Auto-generated method stub
+		return vehicleRepo.findVehicleById(id);
+	}
+
+
 }

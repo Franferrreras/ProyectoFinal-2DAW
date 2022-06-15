@@ -9,4 +9,5 @@ public interface StoreService {
 	public List<Store> getAllStores();
 	public Store insertStore(Store store);
 	public Store updateStore(Store store);
+	public Store getStoreById(Long id);
 }

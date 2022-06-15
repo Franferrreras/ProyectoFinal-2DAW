@@ -1,13 +1,98 @@
 .cars {
-    padding: 5px 30px;
+    
     .main__content-cars{
+        padding: 5px 30px;
         width: 98%;
         margin: 0 auto;
         @include grid('grid-template-columns', 'repeat(3, 33.33%)', 10, 10);
         justify-content: center;
+        align-self: flex-start;
         padding: 0 30px;
         .card {
             @include box-shadow-custom(0.5);
+        }
+    }
+}
+
+.admin {
+    position: relative;
+    .main__content-cars{
+        width: 98%;
+        margin: 0 auto;
+        margin-top: 20px;
+        @include grid('grid-template-columns', 'repeat(3, 33.33%)', 10, 10);
+        justify-content: center;
+        align-self: flex-start;
+        padding: 0 30px;
+        .card {
+            @include box-shadow-custom(0.5);
+        }
+    }
+
+    .btn {
+        position: absolute;
+        z-index: 23;
+        right: 40px;
+        background-color: color(primary) !important;
+        top: 20px;
+    }
+}
+
+
+@include media-query(sm) {
+    .cars {
+        width: 100%;
+        padding-top: 20px;
+        .main__content-cars{
+            padding: 5px 30px;
+            width: 98%;
+            margin: 0 auto;
+            @include grid('grid-template-columns', 'repeat(1, 100%)', 10, 10);
+            justify-content: center;
+            align-self: flex-start;
+            padding: 0 30px;
+            .card {
+                @include box-shadow-custom(0.5);
+            }
+        }
+    }
+
+    .evr-main {
+
+        .main {
+            &__content {
+                margin-top: 0px;
+            }
+        }
+    }
+
+    .admin {
+        .main__content-cars{
+            display: flex !important;
+            flex-wrap: wrap !important;
+            .card {
+                width: 100% !important;
+            }
+        }
+    }
+};
+
+@media screen and (max-width: 750px) {
+
+    .cars {
+        width: 100%;
+        padding-top: 20px;
+        .main__content-cars{
+            padding: 5px 30px;
+            width: 98%;
+            margin: 0 auto;
+            @include grid('grid-template-columns', 'repeat(1, 100%)', 10, 10);
+            justify-content: center;
+            align-self: flex-start;
+            padding: 0 30px;
+            .card {
+                @include box-shadow-custom(0.5);
+            }
         }
     }
 }

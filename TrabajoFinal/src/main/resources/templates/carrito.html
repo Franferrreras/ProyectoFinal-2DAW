@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head th:replace="fragments/bootstrap::head(title='Main')"></head>
+<head th:replace="fragments/bootstrap::head(title='Favorite')"></head>
 <body>
 	<div class="container-fluid">
         <header th:replace="fragments/head::header"></header>
         <main class="cart">
-            <!-- Page Heading/Breadcrumbs -->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-                <li class="breadcrumb-item active">Carrito</li>
-            </ol>
-        
-            <!-- Blog Post -->
             <section class="profile__container">
                 <div class="profile__inner">
                     <div th:replace="fragments/navprofile::nav"></div>
@@ -25,8 +18,8 @@
                                     <img class="card-img-top" th:if="${v.imagenes.size() == 0}" src="img/coche_generic.png">
                                     -->
                                     <div class="col-6">
-                                        <img class="card-img-top" th:unless="${c.getVehicle().getImagenes().size() == 0}" th:src="@{'img/' + ${c.getVehicle().getArrayImagenes(0)}}">
-                                        <img class="card-img-top" th:if="${c.getVehicle().getImagenes().size() == 0}" src="img/coche_generic.png">
+                                        <img class="card-img-top" th:unless="${c.getVehicle().getImagenes().size() == 0}" th:src="@{'/img/' + ${c.getVehicle().getArrayImagenes(0)}}">
+                                        <img class="card-img-top" th:if="${c.getVehicle().getImagenes().size() == 0}" src="/img/generic_v3.png">
                                     </div>
                                     <div class="card-body col-6">
                                         <div class="titleWrapper">
@@ -49,7 +42,7 @@
                                             <div class="totalPrice">Al contado</div>
                                         </div>
                                     </div>
-                                    <a th:href="@{'/favorite/removeFavorite?coche='+${c.getVehicle().getMatricula()} + '&cbck=bck'}">
+                                    <a th:href="@{'/profile/favorite/removeFavorite?coche='+${c.getVehicle().getMatricula()} + '&cbck=bck'}">
                                         <i class='bx bxs-trash'></i>
                                     </a>
                                 </div>

@@ -1,5 +1,14 @@
 .menu {
     
+    &__links {
+        display: flex;
+        margin-bottom: 40px;
+    }
+
+    &__nesting {
+        display: none;
+    }
+
     &__container-filtre {
         width: 98%;
         margin: auto;
@@ -9,14 +18,6 @@
         height: 150px;
     }
 
-    &__filtre {
-        display: flex;
-        margin-bottom: 40px;
-
-        &__sub {
-            display: none;
-        }
-    }
     &__item {
 
         border: 1px solid color(greey-3);
@@ -33,4 +34,188 @@
         display: flex;
         align-items: center;
     }
+
+
+    &--filtro {
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        background-color: rgba(231, 218, 183, 0.932);
+        color: white;
+        padding: 40px 10px;
+        padding-top: 30px;
+        margin: 0 auto;
+        margin-top: 10px;
+        width: 95%;
+
+        &__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin-left: 20px;
+            height:100%;
+        }
+
+        &__links {
+            height: 100%;
+            transition: transition .5s;
+            display: flex;
+            position: relative;
+        }
+
+        &__link {
+            color: #4d4d4d;
+            text-decoration: none;
+            padding: 0 30px;
+            display: flex;
+            height: 100%;
+            align-items: center;
+            cursor: pointer;
+
+            &--inside {
+                padding: 30px 100px 30px 20px;
+                padding: 20px !important;
+                display : flex;
+                justify-content: space-around;
+                &:hover{
+                    background-color: color(white);
+                }
+            }
+        }
+
+        &__item {
+            list-style: none;
+            position: relative;
+            height: 100%;
+            background-color: rgb(255, 253, 253);
+            z-index: 21;
+            padding: 10px 0 !important;
+
+            --clip: polygon(0 0, 100% 0, 100% 0, 0 0);
+            --transform: rotate(-90deg);
+            &:hover {
+                --clip: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+                --transform: rotate(0);
+                z-index: 21;
+            }
+
+            &:last-child {
+                padding: 0 !important;
+                overflow: hidden;
+                input {
+                    height: 100%;
+                    background-color: color(primary);
+                    border: none;
+                    color: white;
+                    width: 100px;
+                    padding: 10px;
+                }
+            }
+        }
+
+        &__arrow {
+            transform: var(--transform);
+            transition: transform .3s;
+            display: block;
+            margin-left: 3px;
+        }
+
+        &__nesting {
+            list-style: none;
+            transition: clip-path .3s;
+            clip-path: var(--clip);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            transform: translateY(100%);
+            background-color: #ffffffce;
+            border: 2px solid color(primary);
+            border-top: none;
+            border-left: none;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+
+            &.select {
+                display: flex !important;
+                flex-wrap: nowrap !important;
+                justify-content: space-around !important;
+                width: 400px;
+                padding: 20px;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+
+                .menu--filtro__link--inside  {
+                    padding: 0 !important;
+
+                    &:hover {
+                        background-color: inherit !important;
+                    }
+                }
+
+                .custom-select {
+                    select {
+                        border-radius: 2px;
+                        padding: 10px;
+                        width: 190px;
+                        background-color: #f0ece9;
+                        cursor: pointer;
+
+                        option {
+                            padding: 10px !important;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        &__inside {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .logo {
+            padding: 15px;
+            background-size: 30px;
+            background-repeat: no-repeat;
+
+            &__audi {
+                background-image: url("../img/svg/audi-13.svg");
+                background-position-y: 50%;
+            }
+
+            &__bmw {
+                background-image: url("../img/svg/bmw-7.svg");
+            }
+
+            &__mazda {
+                background-image: url("../img/svg/mazda-2.svg");
+                background-size: 27px;
+                background-position-x: 40%;
+            }
+
+            &__peugeot {
+                background-image: url("../img/svg/peugeot-8.svg");
+                background-size: 60px;
+                background-position-x: 50%;
+            }
+        }
+    }
+}
+
+
+@include media-query(sm) {
+
+    .menu--filtro {
+        display: none;
+        &__links {
+            flex-direction: column;
+        }
+    }
+    
 }

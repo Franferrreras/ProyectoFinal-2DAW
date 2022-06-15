@@ -6,8 +6,12 @@ public class UsuarioDTO {
 	private String nombre;
 	private String apellidos;
 	private String dni;
+	private String role;
 	private String email;
 	private String password;
+	private String addressLine;
+	private String phone;
+	private Double sueldo;
 	
 	public UsuarioDTO() {
 		// TODO Auto-generated constructor stub
@@ -61,4 +65,36 @@ public class UsuarioDTO {
 		this.dni = dni;
 	}
 
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getAddressLine() {
+		return addressLine;
+	}
+
+	public void setAddressLine(String addressLine) {
+		this.addressLine = addressLine;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Double getSueldo() {
+		return sueldo;
+	}
+
+	public void setSueldo(Double sueldo) {
+		this.sueldo = sueldo;
+	}
+	
 }

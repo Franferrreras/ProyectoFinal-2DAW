@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head th:replace="fragments/bootstrap::head(title='Main')"></head>
+<head th:replace="fragments/bootstrap::head(title='Orders')"></head>
 <body>
 	<div class="container-fluid">
         <header th:replace="fragments/head::header"></header>
@@ -18,8 +18,10 @@
                                     <img class="card-img-top" th:if="${v.imagenes.size() == 0}" src="img/coche_generic.png">
                                     -->
                                     <div class="col-6">
-                                        <img class="card-img-top" th:unless="${o.getVehicle().getImagenes().size() == 0}" th:src="@{'/img/' + ${o.getVehicle().getArrayImagenes(0)}}">
-                                        <img class="card-img-top" th:if="${o.getVehicle().getImagenes().size() == 0}" src="img/coche_generic.png">
+                                        <a th:href="@{'/car/details?matricula='+${o.getVehicle().getMatricula()}}">
+                                            <img class="card-img-top" th:unless="${o.getVehicle().getImagenes().size() == 0}" th:src="@{'/img/' + ${o.getVehicle().getArrayImagenes(0)}}">
+                                            <img class="card-img-top" th:if="${o.getVehicle().getImagenes().size() == 0}" src="img/coche_generic.png">
+                                        </a>
                                     </div>
                                     <div class="card-body col-6">
                                         <div class="titleWrapper">

@@ -73,3 +73,16 @@
         }
     }
 }
+
+.cart {
+    .profile__nav__item:nth-child(2) {
+        background-color: color(primary);
+        color: color(white);
+        font-weight: 600;
+    
+        i.bx.bx-chevron-right {
+            color: color(white);
+            font-weight: 600;
+        }
+    }
+}

@@ -282,8 +282,9 @@ public class Vehicle implements Serializable {
 	@Override
 	public String toString() {
 		return "Vehicle [id=" + id + ", matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo
-				+ ", version=" + version + ", combustible=" + combustible + ", year=" + year + ", status=" + status
-				+ ", kilometros=" + kilometros + ", price=" + price + "]";
+				+ ", version=" + version + ", transmision=" + transmision + ", potencia=" + potencia + ", combustible="
+				+ combustible + ", year=" + year + ", status=" + status + ", kilometros=" + kilometros + ", price="
+				+ price + ", store=" + store + "]";
 	}
 
 }

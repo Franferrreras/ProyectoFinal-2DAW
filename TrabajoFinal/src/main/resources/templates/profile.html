@@ -3,30 +3,33 @@
 <head th:replace="fragments/bootstrap::head(title='Dashboard')">
 </head>
 <link rel="stylesheet" href="/css/stylos.css">
+<link rel="shortcut icon" href="#">
 <body>
 	<div class="container-fluid">
         <header th:replace="fragments/head::header"></header>
         <main>
+            <div th:insert="fragments/navAdmin::nav" sec:authorize="hasRole('ROLE_ADMIN')"></div>
+            <div th:insert="fragments/navAdmin::nav" sec:authorize="hasRole('ROLE_EMPLOYEE')"></div>
             <section class="profile__container">
                 <div class="profile__inner edit">
                     <div th:replace="fragments/navprofile::nav"></div>
                     <div class="profile__content">
                         <h1 class="subTitle subTitle__h1">Información del perfil</h1>
-                        <form action="">
+                        <form th:action="@{/profile/edit}" method="post" th:object="${dto}">
                             <div class="profile__dates">
                                 <div class="profile__dates__basic">
                                     <div class="profile__dates__basic__container">
                                         <div class="form-group">
                                             <label for="username">Nombre</label>
-                                            <input class="form-control" type="text" name="username" th:placeholder="${session.usuario.nombre}">
+                                            <input class="form-control" type="text" name="username" th:placeholder="${session.usuario.nombre}" th:field="*{nombre}">
                                         </div>
                                         <div class="form-group">
                                             <label for="surnames">Apellidos</label>
-                                            <input class="form-control" type="text" name="surnames" th:placeholder="${session.usuario.apellidos}">
+                                            <input class="form-control" type="text" name="surnames" th:placeholder="${session.usuario.apellidos}" th:field="*{apellidos}">
                                         </div>
                                         <div class="form-group">
                                             <label for="phone">Telefono</label>
-                                            <input class="form-control" type="text" name="phone" th:placeholder="${session.usuario.phone}">
+                                            <input class="form-control" type="text" name="phone" th:placeholder="${session.usuario.phone}" th:field="*{phone}">
                                         </div>
                                     </div>
                                 </div>
@@ -39,9 +42,12 @@
                                     </div>
                                     <div>
                                         <div>Eliminar tu cuenta</div>
-                                        <button>Pulsa aquí para eliminar la cuenta</button>
+                                        <a href="#" class="btn btn__delete">Pulsa aquí para eliminar la cuenta</a>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row justify-content-end">
+                                <button class="btn col-2 col-sm-3 m-4 mr-5">Guardar</button>
                             </div>
                         </form>
                     </div>
@@ -50,5 +56,6 @@
         </main>
     </div>
 </body>
+<script src="/js/inicio.js"></script>
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </html>

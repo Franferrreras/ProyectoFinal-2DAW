@@ -16,7 +16,7 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public List<Store> getAllStores() {
 		// TODO Auto-generated method stub
-		return null;
+		return storeRepository.findAll();
 	}
 
 	@Override
@@ -32,6 +32,12 @@ public class StoreServiceImpl implements StoreService {
 	public Store updateStore(Store store) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Store getStoreById(Long id) {
+		// TODO Auto-generated method stub
+		return storeRepository.findStoreById(id);
 	}
 
 	

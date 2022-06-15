@@ -5,25 +5,7 @@
 <link rel="stylesheet" href="/css/stylos.css">
 <body>
 	<div class="container-fluid detail">
-		<header class="evr-header details">
-            <nav class="evr-header__menu menu">
-                <section class="menu__container-top">
-                    <div class="menu__logo">
-                        <img src="/img/GM.jpg">
-                        <h4>General Motors</h4>
-                    </div>
-                    <div class="menu__navbar" th:insert="fragments/parts::menu"></div>
-                    <!-- <h3>Encuentra tu coche al mejor precio</h3> -->
-                    <ul class="menu__options">
-                        <li><i class='bx bx-search-alt-2' id="activar"></i></li>
-                        <li><i class='bx bxs-grid-alt' ></i></li>
-                        <li><i class='bx bxs-bell' ></i></li>
-                        <li><i class='bx bxs-user' ></i></li>
-                        <li><i class='bx bx-dots-vertical-rounded' ></i></li>
-                    </ul>
-                </section>
-            </nav>
-        </header>
+		<header th:insert="fragments/head::header"></header>
 		<main>
 			<div class="main__detail">
                 <div class="card">
@@ -97,6 +79,13 @@
                                 </a>
                             </button>
                         </div>
+                        <div class="wrapper-edit" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <div class="vehiclePriceContainer-3">
+                                <a th:href="@{'/car/edit?matricula='+${vehiculo.getMatricula()}}" method="get">
+                                    <button class=" btn btn__edit" th:href="@{/car/payment}">Editar Vehiculo</button>
+                                </a>
+                            </div>
+                        </div>
                         <div class="wrapper-price">
                             <div class="vehiclePriceContainer">
                                 <p class="vehiclePrice__label" th:text="'Precio al contado'"></p>
@@ -154,7 +143,7 @@
                                 <span class="basicDate__item-icon matricula"></span>
                                 <div class="basicDate">
                                     <h5>Primera Matriculacion</h5>
-                                    <span th:text="${vehiculo.matricula}"></span>
+                                    <span th:text="${vehiculo.year}"></span>
                                 </div>
                             </div>
                             <div class="basicDate__item">

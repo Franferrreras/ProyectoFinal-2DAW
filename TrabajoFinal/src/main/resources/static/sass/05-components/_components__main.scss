@@ -12,12 +12,169 @@
                 width: 100%;
                 @include grid('grid-template-columns', 'repeat(2, 48%)', 10, 10);
                 justify-content: center;
-                .list {
+                grid-template-rows: repeat(2,50%);
+
+                .card.list {
                     &__customer {
-                        grid-column: 1/3;
+                        grid-column: 1/3 !important;
+                        padding: 10px;
+                        display: flex;
+                        flex-wrap: wrap;
+                        flex-direction: row !important;
+                        justify-content: flex-start !important;
+                        gap: 15px;
+
+                        .subTitle {
+                            width: 100%;
+                            padding: 0;
+                            margin: 0;
+                            &::after {
+                                top: 0!important;
+                                margin-top: 0;
+                                width: 20%;
+                            }
+                            
+                        }
+                    }
+
+                }
+
+                &.dashboard {
+
+                    h2 {
+                        color: rgb(175, 163, 129) !important;
+                    }
+                    .card {
+                        display: flex;
+                        justify-content: center;
+                        // max-height: 400px;
+                        .customer__card {
+                            width: 400px;
+                            height: 100px;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            text-align: center;
+                            background-color: #1871ff;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            @include box-shadow-custom(0.5);
+
+                            .subTitle {
+                                color: white !important;
+                                font-weight: 700;
+                            }
+                        }
+
+                        &.perfil__comercial {
+
+                            justify-content: center;
+
+                            .perfil__comercial-container {
+                                width: 100%;
+
+                                .info {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    padding: 5px 30px;
+
+                                    &-1 {
+                                        margin-bottom: 10px;
+                                    }
+                                }
+
+                            }
+
+                            form {
+                                padding: 10px;
+                            }
+                            input[type="submit"] {
+                                background-color: color(primary) !important;
+                                color: color(white);
+                                font-weight: 700;
+                                &:hover{
+                                    background-color: rgba(194, 173, 149, 0.747) !important;
+                                }
+                            }
+
+
+                            
+                        }
+                    }
+                }
+
+                &-cars {
+                    position: relative;
+                    .btn__addCar {
+                        position: absolute;
+                        top: 0;
+                        right: 10px;
+                        background-color: color(primary);
+                        border: 1px solid white;
+                        border-radius: 4px;
+                        z-index: 40;
+                        padding: 5px;
+                        width: 100px;
+                        height: auto;
+                        text-align: center;
+                        display: inherit;
+
+                        &:hover {
+                            background-color: color(primary_hover);
+                        }
+                    }
+                }
+            }
+
+            
+
+        }
+
+    }
+}
+
+main {
+    display: flex;
+    flex-wrap: nowrap !important;
+    justify-content: center;
+    width: 100%;
+}
+
+@include media-query(sm) {
+
+    .evr-main {
+
+        .main__content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+    
+            .card {
+                width: 100%;
+    
+                &.list__customer {
+                    order: 1;
+                }
+    
+                &.slider {
+                    order: 1;
+                }
+    
+            }
+
+            &.dashboard {
+                .card {
+                    .customer__card {
+                        width: 100%;
+                        height: 100px;
                     }
                 }
             }
         }
+
+        &.dashboard .menu-dashboard {
+            margin: 0;
+        }
     }
+
 }

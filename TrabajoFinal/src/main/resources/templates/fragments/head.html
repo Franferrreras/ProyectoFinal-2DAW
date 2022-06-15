@@ -12,7 +12,30 @@
                 <li><i class='bx bx-search-alt-2' id="activar"></i></li>
                 <li><i class='bx bxs-grid-alt' ></i></li>
                 <li><i class='bx bxs-bell' ></i></li>
-                <li><i class='bx bxs-user' ></i></li>
+                <li class="user__icon"·>
+                    <i class='bx bxs-user' ></i>
+                    <div class="user--option" sec:authorize="!isAuthenticated">
+                        <span class="user--perfil">
+                            <a href="/login">Login</a>
+                        </span>
+                        <span class="user--perfil">
+                            <a href="/register">Registrase</a>
+                        </span>
+                    </div>
+                    <div class="user--option" sec:authorize="isAuthenticated">
+                        <span>
+                            <div class="perfil__container close">
+                                <div class="perfil">
+                                    <i class='bx bxs-user'></i>
+                                </div>
+                                <p th:text="${session.usuario.nombre}"></p>
+                                <p th:text="${session.usuario.email}"></p>
+                            </div>
+                        </span>
+                        <span class="user--perfil"><a th:href="@{/profile/edit}">Perfil</a></span>
+                        <span class="user--perfil logout"><a th:href="@{/logout}">Logout</a></span>
+                    </div>
+                </li>
                 <li><i class='bx bx-dots-vertical-rounded' ></i></li>
             </ul>
         </section>

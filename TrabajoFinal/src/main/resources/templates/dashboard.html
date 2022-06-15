@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head th:replace="fragments/bootstrap::head(title='Dashboard')"></head>
+<link rel="shortcut icon" href="#">
 <body m-0>
 	<div class="container-fluid">
         <header class="evr-header">
@@ -12,19 +13,43 @@
                     </div>
                     <h3>Encuentra tu coche al mejor precio</h3>
                     <ul class="menu__options">
-                        <li><i class="fas fa-search" id="activar"></i></li>
-                        <li><i class="fas fa-th-large"></i></li>
-                        <li><i class="far fa-bell"></i></li>
-                        <li><i class="far fa-user"></i></li>
-                        <li><i class="fas fa-ellipsis-v"></i></li>
+                        <li><i class='bx bx-search-alt-2' id="activar"></i></li>
+                        <li><i class='bx bxs-grid-alt'></i></li>
+                        <li><i class='bx bxs-bell'></i></li>
+                        <li class="user__icon"·>
+                            <i class='bx bxs-user' ></i>
+                            <div class="user--option" sec:authorize="!isAuthenticated">
+                                <span class="user--perfil">
+                                    <a href="/login">Login</a>
+                                </span>
+                                <span class="user--perfil">
+                                    <a href="/register">Registrase</a>
+                                </span>
+                            </div>
+                            <div class="user--option" sec:authorize="isAuthenticated">
+                                <span>
+                                    <div class="perfil__container close">
+                                        <div class="perfil">
+                                            <i class='bx bxs-user'></i>
+                                        </div>
+                                        <p th:text="${session.usuario.nombre}"></p>
+                                        <p th:text="${session.usuario.email}"></p>
+                                    </div>
+                                </span>
+                                <span class="user--perfil"><a th:href="@{/profile/edit}">Perfil</a></span>
+                                <span class="user--perfil logout"><a th:href="@{/logout}">Logout</a></span>
+                            </div>
+                        </li>
+                        <li><i class='bx bx-dots-vertical-rounded' ></i></i></li>
                     </ul>
                 </section>
             </nav>
         </header>
-        <main class="evr-main">
-            <aside class="main__menu menu__lateral">
+        <main class="evr-main dashboard">
+            <div th:insert="fragments/navAdmin::nav"></div>
+            <!-- <aside class="main__menu menu__lateral">
                 <div class="toggle"><i class='bx bx-menu'></i></div>
-                <div class="perfil__container">
+                <div class="perfil__container close">
                     <div class="perfil">
                         <i class="fas fa-user"></i>
                     </div>
@@ -32,13 +57,13 @@
                     <p th:text="${session.usuario.email}"></p>
                 </div>
                 <ul>
-                    <li class="menu__lateral-item"><span><i class="fa fa-user-tie"></i><span class="close">Comerciales</span><i class="fas fa-chevron-right close"></i></span></li>
+                    <li class="menu__lateral-item"><span><i class="fa fa-user-tie"></i><span>Comerciales</span><i class="fas fa-chevron-right"></i></span></li>
                     <li class="menu__lateral-item"><span><i class='bx bxs-car'></i><span>Vehiculos</span><i class="fas fa-chevron-right"></i></span></li>
                     <li class="menu__lateral-item"><span><i class="fa fa-chart-area"></i><span>Ventas</span><i class="fas fa-chevron-right"></i></span></li>
                     <li class="menu__lateral-item"><span><i class='bx bxs-user'></i><span>Clientes</span><i class="fas fa-chevron-right"></i></span></li>
                 </ul>
-            </aside>
-            <section class="main__content">
+            </aside> -->
+            <section class="main__content dashboard">
                 <div class="card slider">
                     <div class="slider__item item-1">
                         <canvas id="grafica"></canvas>
@@ -49,30 +74,51 @@
                         <div class="perfil">
                             <i class="fas fa-user"></i>
                         </div>
-                        <div th:if="${cmrsl != null}">
+                        <div class="info-1" sec:authorize="hasRole('ROLE_ADMIN')" th:if="${cmrsl != null}">
                         	<p th:text="${cmrsl.nombre}" id="employee_id2" th:value="${cmrsl.id}"></p>
-                            <a href="www.google.es">Click</a>
                         	<p th:text="${cmrsl.email}"></p>
                         </div>
-                        <div th:if="${cmrsl == null}"> 
+                        <div class="info-1" sec:authorize="hasRole('ROLE_ADMIN')" th:if="${cmrsl == null}"> 
                         	<p id="employee_id" th:text="${comerciales.get(0).nombre}" th:value="${comerciales.get(0).id}"></p>
                         	<p th:text="${comerciales.get(0).email}"></p>
                         </div>
+                        <div class="info-1" sec:authorize="hasRole('ROLE_EMPLOYEE')" th:if="${cmrsl != null}">
+                        	<p th:text="${session.usuario.nombre}" id="employee_id2" th:value="${session.usuario.id}"></p>
+                        	<p th:text="${session.usuario.email}"></p>
+                        </div>
+                        <div class="info-1" sec:authorize="hasRole('ROLE_EMPLOYEE')" th:if="${cmrsl == null}"> 
+                        	<p id="employee_id" th:text="${session.usuario.userName}" th:value="${session.usuario.id}"></p>
+                        	<p th:text="${session.usuario.email}"></p>
+                        </div>
+                        <div class="info" sec:authorize="hasRole('ROLE_EMPLOYEE')">
+                            <span th:text="${session.usuario.apellidos}"></span>
+                            <span th:text="${session.usuario.dni}"></span>
+                        </div>
+                        <div class="info" sec:authorize="hasRole('ROLE_EMPLOYEE')">
+                            <span th:text="${session.usuario.phone}"></span>
+                            <span th:text="${session.usuario.addreessLine}"></span>
+                        </div>
+                        <div class="info" sec:authorize="hasRole('ROLE_EMPLOYEE')">
+                            <span th:text="${session.usuario.role}"></span>
+                        </div>
                     </div>
-                    <form th:action="@{/admin}" method="post" th:object="${comercial}">
+                    <form th:action="@{/admin}" method="post" th:object="${comercial}" sec:authorize="hasRole('ROLE_ADMIN')">
 						<div class="form-group">
 							<label for="comercial" class="form-label mt-3" th:text="Employees"></label> 
 							<select class="form-select" name="comercial">
-								<option class="slct" th:each="c : ${comerciales}" th:value="${c.id}" th:text="${c.nombre} + ' ' + ${c.apellidos}"/>
+								<option class="slct" th:each="c : ${comerciales}" th:value="${c.id}" th:text="${c.nombre} + ' ' + ${c.apellidos}">
 							</select>	
 						</div>
-						<input type="submit" class="btn btn-primary w-100 mt-3" value="Seleccionar" />	
+						<input type="submit" class="btn w-100 mt-3" value="Seleccionar" />	
 					</form>
                 </div>
-                <div class="card">
+                <div class="card list__customer">
+                    <h2 class="subTitle subTitle__h1">Clientes</h2>
                 	<div th:if = "${customers.size == 0}" th:text="'No hay clientes asignados'"></div>
-                	<div class="card-body" th:each="csm : ${customers}">
-                		<div class="card-title" th:text="${csm.nombre}"></div>
+                	<div class="customer__card" th:each="csm : ${customers}">
+                        <a th:href="@{'/admin/ficha?customer='+${csm.id}}">
+                            <div class="subTitle subTitle__h3" th:text="${csm.nombre} + ' ' + ${csm.apellidos}"></div>
+                        </a>
                 	</div>
                 	<!-- 
                 	<div th:if="${cmrsl != null}">

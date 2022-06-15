@@ -1,0 +1,81 @@
+.ficha {
+
+    &__container {
+        width: 100%;
+
+        .svg {
+            overflow: hidden;
+        }
+    }
+
+    &__content {
+        padding: 30px;
+
+        h2 {
+            font-size: 3rem;
+            margin: 60px auto 0;
+        }
+
+        span {
+            height: 48px;
+            width: 48px;
+            margin: 20px auto 0;
+            display: block;
+        }
+
+        p {
+            font-weight: 700;
+            margin: 30px auto 0;
+        }
+
+        svg {
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+    &__perfil {
+        min-height: 644px;
+        background-image: url(../img/foto_perfil.jpg);
+        background-position: 50% 12.09%;
+        background-size: 100%;
+    }
+
+    &__joincontainer {
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+        background-color: color(white);
+    }
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+
+        .btn {
+            &__compra {
+                padding: 5px;
+                background-color: rgba(255, 136, 0, 0.815);
+                border-radius: 4px;
+                border: 1px solid white;
+                position: absolute;
+                top: 0;
+                margin: 5px;
+                transition: 0.3s;
+
+                a{
+                    color: white;
+                }
+
+                &:hover {
+                    
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+
+    section {
+        width: 100%;
+    }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/bootstrap::head(title='Dashboard')"></head>
+<link rel="stylesheet" href="/css/stylos.css">
+<body>
+	<div class="container-fluid">
+        <header class="evr-header">
+            <nav class="evr-header__menu menu">
+                <section class="menu__container-top">
+                    <div class="menu__logo">
+                        <img src="/img/GM-2.jpg">
+                        <h4>General Motors</h4>
+                    </div>
+                    <h3>Bien venido a la zoda administrador</h3>
+                    <ul class="menu__options">
+                        <li><i class='bx bx-search-alt-2' id="activar"></i></li>
+                        <li><i class='bx bxs-grid-alt'></i></li>
+                        <li><i class='bx bxs-bell'></i></li>
+                        <li><i class='bx bxs-user' ></i></li>
+                        <li><i class='bx bx-dots-vertical-rounded' ></i></i></li>
+                    </ul>
+                </section>
+            </nav>
+        </header>
+        <main class="evr-main dashboard">
+            <div th:insert="fragments/navAdmin::nav"></div>
+            <section class="main__content car">
+                <div class="card vehiculo__img">
+                	<form action="#" th:action="@{/car/details/addIMG}" method="post" enctype="multipart/form-data">
+                        <div class="add-container">
+                            <label for="imagen" id="newInput"><i class='bx bx-image-add' style='color:#5c5858'></i></label>
+                		    <input type="file" class="form-control" id="imagen" name="file">
+                		    <input type="text" name="matricula" th:value="${vehiculo.getMatricula()}" hidden>
+                            <input type="submit" value="add +" id="btn-addImg" class="btn-addImg">
+                        </div>
+                	</form>
+                    <img th:src="@{'/img/' + ${vehiculo.getArrayImagenes(0)}}" id="imgv" th:unless="${vehiculo.getImagenes().size() == 0}">
+                    <img src="/img/generic_v3.jpg" th:if="${vehiculo.getImagenes().size() == 0}">
+                </div>
+                <form th:action="@{/car/edit}" method="post" th:object="${dto}">
+                    <div class="card vehiculo__properties">
+                        <div class="minicard">
+                            <h3 class="subTitle subTitle__h3">Kilometros</h3>
+                            <div class="minicard__item">
+                                <span class="minicard__item--icon kilometraje"></span>
+                            </div>
+                            <div class="properties km" >
+                                <input type="text" th:placeholder="${vehiculo.kilometros}" th:field="*{kilometros}">
+                            </div>
+                        </div>
+                        <div class="minicard">
+                            <h3 class="subTitle subTitle__h3">Carburante</h3>
+                            <div class="minicard__item">
+                                <span class="minicard__item--icon carburante"></span>
+                            </div>
+                            <div class="properties cmb">
+                                <input type="text" th:placeholder="${vehiculo.combustible}" th:field="*{combustible}">
+                            </div>
+                        </div>
+                        <div class="minicard">
+                            <h3 class="subTitle subTitle__h3">Potencia</h3>
+                            <div class="minicard__item">
+                                <span class="minicard__item--icon potencia"></span>
+                            </div>
+                            <div class="properties ptc" >
+                                <input type="text" th:placeholder="${vehiculo.potencia}" th:field="*{potencia}">
+                            </div>
+                        </div>
+                        <div class="minicard">
+                            <h3 class="subTitle subTitle__h3">Transmisión</h3>
+                            <div class="minicard__item">
+                                <span class="minicard__item--icon transmision"></span>
+                            </div>
+                            <div class="properties trns">
+                                <input type="text" th:placeholder="${vehiculo.transmision}" th:field="*{transmision}">
+                            </div>
+                        </div>
+                        <div class="minicard">
+                            <div class="container-marca-modelo">
+                                <div class="marca" th:text="${vehiculo.marca}"></div>
+                                <div class="modelo" th:text="${vehiculo.modelo}"></div>
+                            </div>
+                            <input type="submit" value="update">
+                        </div>
+                        <div class="minicard">
+                            <h3 class="subTitle subTitle__h3">Matricula</h3>
+                            <div class="minicard__item">
+                                <span class="minicard__item--icon matricula"></span>
+                            </div>
+                            <div class="properties trns">
+                                <label for="matricula"></label>
+                                <input type="text" name="matricula" th:placeholder="${vehiculo.matricula}" th:field="*{matricula}"></input>
+                                <input type="text" name="id" th:value="${vehiculo.id}" hidden>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="card list__imgs">
+                    <div class="minicard minicard--vimg" th:each="i : ${vehiculo.getListImagenes()}" th:unless="${vehiculo.imagenes.size() == 0}">
+                        <img class="d-block w-100 " th:src="@{'/img/' + ${i.getImagen()}}"> 
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.js" integrity="sha512-Lii3WMtgA0C0qmmkdCpsG0Gjr6M0ajRyQRQSbTF6BsrVh/nhZdHpVZ76iMIPvQwz1eoXC3DmAg9K51qT5/dEVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+<script src="/js/editv.js"></script>
+</html>

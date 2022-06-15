@@ -36,7 +36,7 @@ $wf__info-color            :    #6fadd3;
 $wf__success-color         :    #85bd6e;
 
 /*text */
-$wf__text-default-color    :    #646464;
+$wf__text-default-color    :    #d1bdb2;
 $wf__text-twitter          :    #00ACED;
 
 
@@ -129,3 +129,15 @@ $wf__h3: 26 !default;
 $wf__h4: 20 !default;
 $wf__h5: 13 !default;
 $wf__h6: 11 !default;
+
+
+//Responsive
+$wf__x-small      :     320;
+$wf__small        :     768;
+$wf__medium       :     920;
+$wf__large        :     1199;
+$wf__min-large    :     1280;
+$wf__max-large    :     3500;
+
+$maxwidth         :     1170;
+$maxwidth-inner   :     1350;

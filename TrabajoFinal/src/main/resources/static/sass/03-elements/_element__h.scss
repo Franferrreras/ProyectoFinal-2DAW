@@ -3,10 +3,14 @@
     flex-direction: column;
     padding-bottom: 8px;
     text-align: center;
-    color: #003e70;
+    color: #003e70 !important;
 
     &__h1 {
         font-size:rem(24);
+    }
+
+    &__h3 {
+        font-size:rem(16);
     }
 
     &::after {

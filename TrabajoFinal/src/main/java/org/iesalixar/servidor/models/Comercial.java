@@ -22,6 +22,9 @@ public class Comercial extends Usuario implements Serializable {
 
 	@Column(nullable = false)
 	private String jobTitle;
+	
+	@Column(nullable = false)
+	private Double sueldo;
 
 	/*
 	@OneToMany(mappedBy = "comercial", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -62,6 +65,14 @@ public class Comercial extends Usuario implements Serializable {
 
 	public void setOffice(Office office) {
 		this.office = office;
+	}
+
+	public Double getSueldo() {
+		return sueldo;
+	}
+
+	public void setSueldo(Double sueldo) {
+		this.sueldo = sueldo;
 	}
 	
 }

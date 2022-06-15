@@ -1,0 +1,83 @@
+<meta charset="UTF-8">
+<div class="menu-dashboard" th:fragment="nav">
+    <!-- TOP MENU -->
+    <div class="top-menu">
+        <div class="logo">
+            <img src="/img/svg/user.svg">
+            <span>
+                <div class="perfil__container close">
+                    <div class="perfil">
+                        <i class='bx bxs-user'></i>
+                    </div>
+                    <p th:text="${session.usuario.nombre}"></p>
+                    <p th:text="${session.usuario.email}"></p>
+                </div>
+            </span>
+        </div>
+        <div class="toggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </div>
+    <!-- MENU -->
+    <div class="menu">
+        <div class="enlace">
+            <i class="bx bx-grid-alt"></i>
+            <span>
+                <a th:href="@{/admin}">
+                    Dashboard
+                </a>
+            </span>
+        </div>
+
+        <div class="enlace">
+            <i class="bx bx-user"></i>
+            <span>
+                <a th:href="@{/profile/edit}">
+                    Perfil
+                </a>
+            </span>
+        </div>
+
+        <div class="enlace">
+            <i class="bx bx-grid-alt"></i>
+            <span>
+                <a th:href="@{/}">
+                    Coches
+                </a>
+            </span>
+        </div>
+
+        <div class="enlace">
+            <i class="bx bx-file-blank"></i>
+            <span>
+                <a th:href="@{/admin/stores}">
+                    Stores
+                </a>
+            </span>
+        </div>
+
+        <div class="enlace">
+            <i class="bx bx-file-blank"></i>
+            <span>
+                <a th:href="@{/admin/offices}">
+                    Offices
+                </a>
+            </span>
+        </div>
+
+        <div class="enlace">
+            <i class="bx bx-cart"></i>
+            <span>Pedidos</span>
+        </div>
+
+        <div class="enlace">
+            <i class="bx bx-heart"></i>
+            <span>Favoritos</span>
+        </div>
+
+        <div class="enlace">
+            <i class="bx bx-cog"></i>
+            <span>Configuración</span>
+        </div>
+    </div>
+</div>

@@ -9,7 +9,7 @@ html {
 }
 .service {
     width: 100%;
-
+    display: inherit;
     &__title {
         width: 50%;
         margin: 0 auto;
@@ -82,4 +82,65 @@ html {
         }
     }
 
+}
+
+@include media-query(sm) {
+
+    .service {
+
+        .step {
+            width: 100%;
+
+            &__content {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            &__description {
+                margin: 20px;
+            }
+        }
+
+        &__title {
+            font-size: rem(35);
+            width: 100%;
+        }
+
+        .shield__item .garantee {
+            font-size: .8rem;
+        }
+    }
+
+    .main__detail .vehicle__basicDate .basicDate__container {
+        flex-direction: column;
+
+        .basicDate__item {
+            width: 100%;
+            flex-direction: row;
+            max-width: none;
+
+            .basicDate {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                width: 80%;
+                padding: 10px;
+                margin: 0;
+
+                span {
+                    text-align: left;
+                    width: 30%;
+                }
+
+                h5 {
+                    text-align: left;
+                }
+            }
+        }
+    }
+    .main__detail .vehicle__basicDate__inner {
+        padding: 20px !important;
+    }
 }

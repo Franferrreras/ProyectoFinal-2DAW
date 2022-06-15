@@ -34,50 +34,45 @@ function cargarGrafica(list_json) {
         id_employee = document.getElementById("employee_id2").getAttribute("value");
     }
     
-    // if (document.getElementById("employee_id2").getAttribute("value") != "" ) {
-    //     id_employee = document.getElementById("employee_id2").getAttribute("value");
-    // }
-    console.log("holaaaaaaa");
-    console.log(id_employee);
     for (let i of list_json) {
         let date = new Date(i.reservaDate);
         console.log(i)
         if (i.comercial.id == id_employee) {
     
             if (date.getMonth() == 0) {
-                jun = i.priceBuy;
+                jun += i.priceBuy;
             }
     
             if (date.getMonth() == 1) {
-                fbr = i.priceBuy;
+                fbr += i.priceBuy;
             }
     
             if (date.getMonth() == 2) {
-                mrz = i.priceBuy;
+                mrz += i.priceBuy;
             }
     
             if (date.getMonth() == 3) {
-                abrl = i.priceBuy;
+                abrl += i.priceBuy;
             }
     
             if (date.getMonth() == 4) {
-                may = i.priceBuy;
+                may += i.priceBuy;
             }
             
             if (date.getMonth() == 5) {
-                jn = i.priceBuy;
+                jn += i.priceBuy;
             }
     
             if (date.getMonth() == 6) {
-                jl = i.priceBuy;
+                jl += i.priceBuy;
             }
     
             if (date.getMonth() == 7) {
-                ags = i.priceBuy;
+                ags += i.priceBuy;
             }
     
             if (date.getMonth() == 8) {
-                spt = i.priceBuy;
+                spt += i.priceBuy;
             }
     
             if (date.getMonth() == 9) {
@@ -85,11 +80,11 @@ function cargarGrafica(list_json) {
             }
     
             if (date.getMonth() == 10) {
-                nov = i.priceBuy;
+                nov += i.priceBuy;
             }
     
             if (date.getMonth() == 11) {
-                dic = i.priceBuy;
+                dic += i.priceBuy;
             }
 
             //console.log(i.reservaDate);
@@ -205,3 +200,26 @@ function selected() {
         
     }
 }
+
+
+const toggle = document.querySelector(".toggle")
+const menuDashboard = document.querySelector(".menu-dashboard")
+const iconoMenu = toggle.querySelector("i")
+const enlacesMenu = document.querySelectorAll(".enlace")
+
+toggle.addEventListener("click", () => {
+    menuDashboard.classList.toggle("open")
+
+    if(iconoMenu.classList.contains("bx-menu")){
+        iconoMenu.classList.replace("bx-menu", "bx-x")
+    }else {
+        iconoMenu.classList.replace("bx-x", "bx-menu")
+    }
+})
+
+enlacesMenu.forEach(enlace => {
+    enlace.addEventListener("click", () => {
+        menuDashboard.classList.add("open")
+        iconoMenu.classList.replace("bx-menu", "bx-x")
+    })
+})

@@ -12,8 +12,10 @@ html {
 }
 
 .main {
-
+    
     &__detail {
+        
+        width: 100%;
 
         .card {
 
@@ -103,7 +105,6 @@ html {
             background-color: color(white) !important;
         }
         .vehicle {
-
             &__genericInfo {
                 margin: auto;
                 padding: 20px 110px;
@@ -120,7 +121,7 @@ html {
                 }
 
                 &__inner {
-
+                    position: relative;
                     display: flex;
                     justify-content: center;
                     gap: 10px;
@@ -199,63 +200,51 @@ html {
                                             background-color: transparent;
                                             text-decoration: none;
                                             border: none;
+                                            
+                                            &:hover {
+                                                color: color(greey-4);
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
+
+                        &-edit {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            position: absolute;
+                            left: 35%;
+                            align-self: center;
+                            .btn__edit {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                text-decoration: none;
+                                height: 46px;
+                                padding: 0 24px;
+                                margin-bottom: 0;
+                                vertical-align: middle;
+                                touch-action: manipulation;
+                                background-image: none;
+                                border: 1px solid white;
+                                border-radius: 5px;
+                                font-size: 16px;
+                                line-height: 1.5;
+                                font-weight: 700;
+                                font-family: Lato,Helvetica Neue,Helvetica,Arial,sans-serif;
+                                text-align: center;
+                                color: #fff;
+                                background: rgb(244,147,56);
+                                background: linear-gradient(196deg, rgba(244,147,56,1) 0%, rgba(255,222,110,1) 50%, rgba(227,165,63,1) 100%);
+                                min-width: 230px;
+                            }
+                        }
                     }
-    
                 }
 
             }
-
-            // &__garantee {
-            //     margin-top: 8px;
-            //     &__inner {
-            //         padding: 60px 0;
-            //         display: flex; 
-            //         justify-content: center;
-            //     }
-
-            //     &__item {
-            //         max-width: 390px;
-            //         padding: 0 10px;
-
-            //         &:first-child {
-            //             padding-left: 0;
-            //         }
-
-            //         &:last-child {
-            //             padding-right: 0;
-            //         }
-
-            //         .garantee {
-            //             display: block;
-            //             text-align: center;
-            //             font-size: rem(16);
-                        
-            //             &__title {
-            //                 display: block;
-            //                 text-align: center;
-
-            //                 h4 {
-            //                     margin: 8px auto 12px;
-            //                     font-weight: 600;
-            //                     line-height: 1.2;
-            //                     color: #003e70;
-            //                     font-size: 18px;
-            //                 }
-
-            //                 i.bx.bx-shield {
-                
-            //                     cursor: pointer;
-            //                     font-size: rem(30) !important;
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
 
             &__basicDate {
                 margin-top: 8px;
@@ -364,5 +353,126 @@ html {
                 }
             }
         }
+
+        &.edit {
+
+            input {
+                border: none;
+                width: 60%;
+                margin: 0;
+                padding: 0;
+                
+                &::placeholder {
+                    color: inherit;
+                }
+            }
+
+            .vehicle {
+
+                &__genericInfo {
+
+                    &__inner {
+
+                        .wrapper {
+
+                            &-title {
+                                width: 25%;
+                                div {
+                                    display: flex;
+                                    flex-wrap: nowrap;
+                                    padding: 0;
+                                    .title {
+                                        width: 100%;
+                                        padding-left: 0;
+                                        text-align: left;
+                                    }
+                                }
+
+                                .subTitle {
+                                    text-align: left;
+                                }
+                            }
+
+                            &-price {
+                                input.vehiclePrice {
+                                    float: right;
+                                    margin-right: -15px;
+                                    text-align: right;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &__basicDate {
+
+                    .basicDate {
+
+                        &__item {
+
+                            input {
+                                align-items: flex-start;
+                                flex-grow: 0;
+                                max-width: none;
+                                margin-left: 0;
+                                text-align: center;
+
+                                &::placeholder {
+                                    color: #4a4a4a;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+
+@include media-query(sm) {
+    .main__detail .vehicle__genericInfo {
+        padding: 20px;
+    }
+
+    .main__detail .vehicle__genericInfo__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+
+        .wrapper {
+
+            &-title {
+                .subTitle {
+                    text-align: left;
+                }
+            }
+            
+            &-price {
+                
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                .vehiclePriceContainer-3 {
+                    width: 100%;
+                    .btn__cLink {
+                        text-align: left !important;
+                        margin: 10px;
+                        min-width: none !important;
+
+                    }
+                }
+
+                .vehiclePrice__label {
+                    text-align:left;
+                }
+            }
+
+            &-icons {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+        }   
     }
 }

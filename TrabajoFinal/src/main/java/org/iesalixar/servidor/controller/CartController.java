@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/favorite")
+@RequestMapping("/profile/favorite")
 public class CartController {
 
 	@Autowired
@@ -113,19 +113,6 @@ public class CartController {
 	public String removeCarFromCart(@RequestParam(name = "coche", required = false) String coche,@RequestParam(name="cbck", required = false) String back,Authentication auth,
 			HttpSession session) {
 
-//		String username = auth.getName();
-//
-//		Customer customer = null;
-//
-//		if (session.getAttribute("usuario") == null) {
-//			Usuario usuario = usuarioService.findUsuarioByUserName(username);
-//			usuario.setPassword(null);
-//			session.setAttribute("usuario", usuario);
-//			customer = customerService.findCustomerByName(usuario.getUserName());
-//		} else {
-//			customer = customerService.findCustomerByName(username);
-//		}
-
 		if (auth != null) {
 			Usuario user =  (Usuario) session.getAttribute("usuario");
 			
@@ -139,7 +126,7 @@ public class CartController {
 				customerService.updateCustomer(customer);
 				
 				if (back != null) {
-					return "redirect:/favorite";
+					return "redirect:/profile/favorite";
 				}
 
 				return "redirect:/";

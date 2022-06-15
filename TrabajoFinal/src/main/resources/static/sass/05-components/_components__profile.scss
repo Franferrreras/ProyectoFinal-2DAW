@@ -1,7 +1,7 @@
 .profile {
 
     &__container {
-        width: 60%;
+        width: 65%;
         margin: 0 auto;
         padding: 10px 0;
     }
@@ -57,6 +57,16 @@
                 border: 1px solid color(greey-3);
                 border-radius: 4px;
             }
+
+            .btn.btn__delete {
+                background-color: transparent !important;
+                color: color(primary) !important;
+                padding: 0;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 
@@ -64,5 +74,35 @@
         background-color: #ffffff;
         width: 75%;
         border-radius: 4px;
+
+        .btn {
+            background-color: color(primary);
+            color: color(white);
+
+        }
     }
+}
+
+@include media-query(sm) {
+
+    .profile {
+
+        &__inner.edit {
+
+            flex-wrap: wrap;
+
+            .profile__nav__container {
+                width: 100%;
+            }
+        }
+
+        &__content {
+            width: 100%;
+
+            .profile__dates {
+                flex-wrap: wrap;
+            }
+        }
+    }
+    
 }

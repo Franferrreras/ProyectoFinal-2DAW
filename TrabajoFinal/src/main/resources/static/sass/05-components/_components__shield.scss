@@ -65,3 +65,11 @@
         }
     }
 }
+
+
+@include media-query(sm) {
+
+    .shield {
+        padding: 20px 10px;
+    }
+}

@@ -1,9 +1,20 @@
-.btn {
+.btns {
     @include transition(all 0.5s ease);
-	border: none;
 	border-radius: 0;
 	font-size: rem(18);
 	padding: rem(8) rem(12);
 	font-family: $wf__font--default;
 	white-space: normal;
+	border: 1px solid white !important;
+
+	&-orange {
+		background-color: orange;
+	}
+}
+
+.bg {
+
+	&__orange {
+		background-color: orange !important;
+	}
 }
