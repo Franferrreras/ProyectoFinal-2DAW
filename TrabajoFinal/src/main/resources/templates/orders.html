@@ -44,7 +44,7 @@
                                             <div class="totalPrice">Al contado</div>
                                         </div>
                                     </div>
-                                    <a th:href="@{'/favorite/removeFavorite?coche='+${o.getVehicle().getMatricula()} + '&cbck=bck'}">
+                                    <a th:href="@{'/profile/orders/remove?matricula='+${o.getVehicle().getMatricula()} + '&cbck=bck'}">
                                         <i class='bx bxs-trash'></i>
                                     </a>
                                 </div>

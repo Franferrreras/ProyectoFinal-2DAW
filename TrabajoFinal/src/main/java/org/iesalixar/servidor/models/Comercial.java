@@ -36,6 +36,7 @@ public class Comercial extends Usuario implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_office")
+	@JsonIgnore
 	private Office office;
 	
 	public Comercial() {

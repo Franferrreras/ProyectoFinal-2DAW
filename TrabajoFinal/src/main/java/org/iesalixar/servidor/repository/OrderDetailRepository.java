@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.iesalixar.servidor.models.OrderDetail;
+import org.iesalixar.servidor.models.Vehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -17,4 +18,6 @@ public interface OrderDetailRepository extends CrudRepository<OrderDetail, Long>
 
 	@Query(value = "SELECT * FROM order_detail WHERE id_customer = ?", nativeQuery = true)
 	public List<OrderDetail> getCarsByCustomer(Long id_customer);
+	
+	public OrderDetail findOrderDetailByVehicle(Vehicle vehicle);
 }

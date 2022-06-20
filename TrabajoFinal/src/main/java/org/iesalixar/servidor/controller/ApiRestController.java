@@ -52,9 +52,6 @@ public class ApiRestController {
 				session.setAttribute("usuario", usuario);
 				customer = customerService.findCustomerByName(usuario.getUserName());
 			} 
-//			else {
-//				customer = customerService.findCustomerByName(username);
-//			}
 			
 			if (username!=null) {
 				customer = customerService.findCustomerByName(username);

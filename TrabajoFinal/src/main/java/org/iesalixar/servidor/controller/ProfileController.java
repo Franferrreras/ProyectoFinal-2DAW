@@ -7,9 +7,11 @@ import javax.servlet.http.HttpSession;
 import org.iesalixar.servidor.models.Customer;
 import org.iesalixar.servidor.models.OrderDetail;
 import org.iesalixar.servidor.models.Usuario;
+import org.iesalixar.servidor.models.Vehicle;
 import org.iesalixar.servidor.services.CustomerServiceImpl;
 import org.iesalixar.servidor.services.OrderDetailServiceImpl;
 import org.iesalixar.servidor.services.UsuarioServiceImpl;
+import org.iesalixar.servidor.services.VehicleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/profile")
@@ -31,6 +34,9 @@ public class ProfileController {
 	
 	@Autowired
 	CustomerServiceImpl customerService;
+	
+	@Autowired
+	VehicleServiceImpl vehicleService;
 	
 	@GetMapping("/edit")
 	public String editGet(Model model, HttpSession session, Authentication auth) {
@@ -98,4 +104,17 @@ public class ProfileController {
 		return "orders";
 	}
 	
+	@GetMapping("/orders/remove")
+	public String removeOrder(@RequestParam(name = "matricula", required = false) String matricula) {
+		
+		
+		Vehicle carDB = vehicleService.getVehicleByMatrucula(matricula);
+		
+		OrderDetail order = orderdService.getOrderDetailByVehicle(carDB);
+		
+		orderdService.removeOrderDetail(order);
+		System.out.println(order);
+		
+		return "redirect:/profile/orders";
+	}
 }

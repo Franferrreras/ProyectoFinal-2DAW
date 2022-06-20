@@ -12,7 +12,7 @@
 	<groupId>org.iesalixar.servidor</groupId>
 	<artifactId>springsecurityjpa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>springsecurityjpa</name>
 	<description>Autentificación usando JPA/BD</description>
 	<properties>
@@ -69,6 +69,11 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>42.3.3</version>
 		</dependency>
 	</dependencies>
 

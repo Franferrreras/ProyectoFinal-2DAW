@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.iesalixar.servidor.models.OrderDetail;
+import org.iesalixar.servidor.models.Vehicle;
 import org.iesalixar.servidor.repository.OrderDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +50,21 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	public List<OrderDetail> getOrdersByCustomer(Long id_customer) {
 		// TODO Auto-generated method stub
 		return orderdetailRepo.getCarsByCustomer(id_customer);
+	}
+
+	@Override
+	public Boolean removeOrderDetail(OrderDetail ord) {
+		// TODO Auto-generated method stub
+		
+		orderdetailRepo.delete(ord);
+		
+		return true;
+	}
+
+	@Override
+	public OrderDetail getOrderDetailByVehicle(Vehicle vehicle) {
+		// TODO Auto-generated method stub
+		return orderdetailRepo.findOrderDetailByVehicle(vehicle);
 	}
 
 }
